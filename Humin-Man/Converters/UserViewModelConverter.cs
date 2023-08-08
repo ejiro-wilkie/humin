@@ -31,8 +31,8 @@ namespace Humin_Man.Converters
         /// </summary>
         /// <param name="user">The user.</param>
         /// <returns></returns>
-        public UpdateUserInputModel Convert(CreateUserInputViewModel user)
-            => new UpdateUserInputModel
+        public CreateUserInputModel Convert(CreateUserInputViewModel user)
+            => new CreateUserInputModel
             {
                 Email = user.Email,
                 FirstName = user.FirstName,
@@ -41,6 +41,26 @@ namespace Humin_Man.Converters
                 PhoneNumber = user.PhoneNumber,
                 Password = user.Password,
             };
+
+        /// <summary>
+        /// Converts the specified user.
+        /// </summary>
+        /// <param name="user">The user.</param>
+        /// <returns></returns>
+        public UpdateUserInputModel Convert(UpdateUserInputViewModel user)
+        {
+            return new UpdateUserInputModel
+            {
+                Id = user.Id,
+                Email = user.Email,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                UserName = user.UserName,
+                PhoneNumber = user.PhoneNumber,
+                Password = user.Password,
+
+            };
+        }
 
         /// <summary>
         /// Converts the specified user.
@@ -56,8 +76,9 @@ namespace Humin_Man.Converters
                 LastName = user.LastName,
                 UserName = user.UserName,
                 PhoneNumber = user.PhoneNumber,
-                Id =    user.Id
+                Id = user.Id
             };
         }
+
     }
 }
