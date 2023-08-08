@@ -3,7 +3,7 @@
     /// <summary>
     /// Class that represent the create user input model.
     /// </summary>
-    public class UpdateUserInputModel
+    public class CreateUserInputModel
     {
         /// <summary>
         /// Gets or sets the first name.
@@ -12,6 +12,7 @@
         /// The first name.
         /// </value>
         public string FirstName { get; set; }
+        ///jskdbfjhfbvadjsh
 
         /// <summary>
         /// Gets or sets the last name.
