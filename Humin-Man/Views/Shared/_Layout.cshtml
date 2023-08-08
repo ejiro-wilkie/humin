@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta base="@Url.Content("/")"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>@ViewData["Title"] - Humin Man</title>
+    <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css" asp-append-version="true">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="/css/adminlte.min.css" asp-append-version="true">
+    @RenderSection("Styles", false)
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <style>
+        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x- ng-cloak { display: none !important; }
+    </style>
+</head>
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+        @if (User.Identity.IsAuthenticated)
+        {
+            <!-- Navbar -->
+            <partial name="_Navbar" />
+            <!-- End Navbar -->
+            <!-- Main Sidebar Container -->
+            <partial name="_MainSideBar" />
+            <!-- End Main Sidebar Container -->
+            <div class="content-wrapper">
+                <section class="content-header">
+                    <div class="container-fluid">
+                        <div class="row mb-2">
+                            <div class="col-sm-6">
+                                <h1>@ViewData["Title"]</h1>
+                            </div>
+                        </div>
+                    </div><!-- /.container-fluid -->
+                </section>
+                <!-- Main content -->
+                <div class="content">
+                    <div class="container-fluid ">
+                        @RenderBody()
+                    </div><!-- /.container-fluid -->
+                </div>
+                <!-- /.content -->
+            </div>
+            <footer class="main-footer">
+                <div class="float-right d-none d-sm-inline">
+                    Ozbul IT
+                </div>
+                <strong> &copy; 2020 - Humin_Man - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a> </strong>
+            </footer>
+        }
+        else
+        {
+            @RenderBody()
+        }
+        <!-- jQuery -->
+        <script src="/plugins/jquery/jquery.min.js" asp-append-version="true"></script>
+        <!-- Bootstrap 4 -->
+        <script src="/plugins/bootstrap/js/bootstrap.bundle.min.js" asp-append-version="true"></script>
+        <!-- AdminLTE App -->
+        <script src="/js/adminlte.min.js" asp-append-version="true"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+        @RenderSection("Scripts", false)
+
+        <script src="~/js/site.js" asp-append-version="true"></script>
+
+        @if (TempData.ContainsKey("success"))
+        {
+            <script>huminAlert.success("@TempData["success"]")</script>
+        }
+        else if (TempData.ContainsKey("error"))
+        {
+            <script>huminAlert.error("@TempData["error"]")</script>
+        }
+    </div>
+</body>
+</html>
