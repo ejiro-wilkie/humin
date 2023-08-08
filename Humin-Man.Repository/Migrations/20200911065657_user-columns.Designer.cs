@@ -11,7 +11,7 @@ namespace Humin_Man.Repository.Migrations
 {
     [DbContext(typeof(HuminDbContext))]
     [Migration("20200911065657_user-columns")]
-    partial class usercolumns
+    partial class Usercolumns
     {
         /// <summary>
         /// Implemented to builds the <see cref="P:Microsoft.EntityFrameworkCore.Migrations.Migration.TargetModel" />.

@@ -11,7 +11,7 @@ namespace Humin_Man.Repository.Migrations
 {
     [DbContext(typeof(HuminDbContext))]
     [Migration("20200909145607_setup")]
-    partial class setup
+    partial class Setup
     {
         /// <summary>
         /// Implemented to builds the <see cref="P:Microsoft.EntityFrameworkCore.Migrations.Migration.TargetModel" />.
