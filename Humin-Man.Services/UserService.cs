@@ -123,17 +123,12 @@ namespace Humin_Man.Services
 
 
             var user = await _userManager.FindByIdAsync(input.Id.ToString());
-            if (user == null)
-            {
-                // Handle the error, e.g., throw an exception or return an error response
-            }
 
             user.FirstName = input.FirstName;
             user.LastName = input.LastName;
             user.UserName = input.UserName;
             user.Email = input.Email;
             user.PhoneNumber = input.PhoneNumber;
-            user.SecurityStamp = "";
 
             await _userManager.UpdateAsync(user);
         }
