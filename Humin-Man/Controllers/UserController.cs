@@ -103,7 +103,7 @@ namespace Humin_Man.Controllers
         {
             try
             {
-                await _userService.AddAsync(new UpdateUserInputModel
+                await _userService.AddAsync(new CreateUserInputModel
                 {
                     Email = input.Email,
                     FirstName = input.FirstName,
@@ -137,7 +137,7 @@ namespace Humin_Man.Controllers
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <returns></returns>
-        [HttpGet("{id}/Update")]
+        [HttpGet("Update/{id}")]
         public async Task<IActionResult> Update(long id)
         {
             try
@@ -167,15 +167,15 @@ namespace Humin_Man.Controllers
         /// Updates this instance.
         /// </summary>
         /// <returns></returns>
-        [HttpPost("Update")]
+        [HttpPost("Update/{id}")]
         public async Task<IActionResult> Update(UpdateUserInputViewModel input)
         {
-            var user = await _userService.GetAsync(input.Id);
-            user.Email = input.Email;
-            user.FirstName = input.FirstName;
-            user.LastName = input.LastName;
-            user.PhoneNumber = input.PhoneNumber;
-            user.UserName = input.UserName;
+            var updateUserInput = _userViewModelConverter.Convert(input);
+
+            await _userService.UpdateAsync(updateUserInput);
+
+            return RedirectToAction("Index");
+
 
         }
  /// <summary>

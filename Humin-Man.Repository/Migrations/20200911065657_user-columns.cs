@@ -6,7 +6,7 @@ namespace Humin_Man.Repository.Migrations
     /// 
     /// </summary>
     /// <seealso cref="Microsoft.EntityFrameworkCore.Migrations.Migration" />
-    public partial class usercolumns : Migration
+    public partial class Usercolumns : Migration
     {
         /// <summary>
         /// <para>

@@ -44,7 +44,7 @@ namespace Humin_Man.Services
         /// <param name="input">The input.</param>
         /// <returns></returns>
         /// <exception cref="NotImplementedException"></exception>
-        public async Task AddAsync(UpdateUserInputModel input)
+        public async Task AddAsync(CreateUserInputModel input)
         {
             if (input == null)
                 throw new ArgumentNullHmException(nameof(input));
@@ -120,15 +120,16 @@ namespace Humin_Man.Services
             if (string.IsNullOrWhiteSpace(input.Password))
                 throw new ArgumentNullHmException(nameof(input.Password));
 
-            var user = new User
-            {
-                FirstName = input.FirstName,
-                LastName = input.LastName,
-                UserName = input.UserName,
-                Email = input.Email,
-                PhoneNumber = input.PhoneNumber,
-                
-            };
+
+
+            var user = await _userManager.FindByIdAsync(input.Id.ToString());
+
+            user.FirstName = input.FirstName;
+            user.LastName = input.LastName;
+            user.UserName = input.UserName;
+            user.Email = input.Email;
+            user.PhoneNumber = input.PhoneNumber;
+
             await _userManager.UpdateAsync(user);
         }
     }

@@ -7,10 +7,11 @@ namespace Humin_Man.Repository.Migrations
     /// 
     /// </summary>
     /// <seealso cref="Microsoft.EntityFrameworkCore.Migrations.Migration" />
-    public partial class setup : Migration
+    public partial class Setup : Migration
     {
         /// <summary>
         /// <para>
+        /// Builds the operations that will migrate the database 'up'.
         /// Builds the operations that will migrate the database 'up'.
         /// </para>
         /// <para>

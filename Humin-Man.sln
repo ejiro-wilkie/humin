@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30204.135
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Humin-Man", "Humin-Man\Humin-Man.csproj", "{F14FC9F5-877B-4AB4-86C0-2DFA1271A7BB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Humin-Man", "Humin-Man\Humin-Man.csproj", "{F14FC9F5-877B-4AB4-86C0-2DFA1271A7BB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{E7679DF3-DC8E-41BB-9313-7F96FCA4EA01}"
 EndProject
@@ -23,7 +23,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Humin-Man.Common", "Humin-M
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Humin-Man.Auth", "Humin-Man.Auth\Humin-Man.Auth.csproj", "{F397B2ED-C5EC-45E6-ADFC-884393136ADF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Humin-Man.Converter", "Humin-Man.Converter\Humin-Man.Converter.csproj", "{3632E918-3FF2-41F7-95BF-E3B674190791}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Humin-Man.Converter", "Humin-Man.Converter\Humin-Man.Converter.csproj", "{3632E918-3FF2-41F7-95BF-E3B674190791}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

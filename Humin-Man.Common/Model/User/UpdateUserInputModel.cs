@@ -1,9 +1,9 @@
 ﻿namespace Humin_Man.Common.Model.User
 {
     /// <summary>
-    /// Class that represent the create user input model.
+    /// Class that represent the update user input model.
     /// </summary>
-    public class CreateUserInputModel
+    public class UpdateUserInputModel
     {
         /// <summary>
         /// Gets or sets the first name.
@@ -12,7 +12,7 @@
         /// The first name.
         /// </value>
         public string FirstName { get; set; }
-        ///jskdbfjhfbvadjsh
+        //hellos
 
         /// <summary>
         /// Gets or sets the last name.
@@ -53,5 +53,13 @@
         /// The password.
         /// </value>
         public string Password { get; set; }
+        /// <summary>
+        /// Gets or sets the id of the user.
+        /// </summary>
+        /// <value>
+        /// The id of the user.
+        /// </value>
+        public long Id { get; set; }
+
     }
 }

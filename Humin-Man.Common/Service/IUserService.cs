@@ -15,7 +15,7 @@ namespace Humin_Man.Common.Service
         /// </summary>
         /// <param name="input">The input.</param>
         /// <returns></returns>
-        Task AddAsync(UpdateUserInputModel input);
+        Task AddAsync(CreateUserInputModel input);
 
         /// <summary>
         /// Gets the user asynchronously
