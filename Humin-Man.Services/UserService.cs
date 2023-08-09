@@ -70,7 +70,11 @@ namespace Humin_Man.Services
                 PhoneNumber = input.PhoneNumber,
             };
 
-            await _userManager.CreateAsync(user, input.Password);
+            var result = await _userManager.CreateAsync(user, input.Password);
+            if (!result.Succeeded)
+            {
+                throw new HmException($"User creation failed: {result.Errors.FirstOrDefault()?.Description}");
+            }
         }
 
         /// <summary>
