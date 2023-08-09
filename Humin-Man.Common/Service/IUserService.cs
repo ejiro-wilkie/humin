@@ -36,5 +36,13 @@ namespace Humin_Man.Common.Service
         /// <param name="input">The input.</param>
         /// <returns></returns>
         Task UpdateAsync(UpdateUserInputModel input);
+
+        /// <summary>
+        /// Deletes the user asynchronously.
+        /// </summary>
+        /// <param name="id">The user identifier.</param>
+        /// <returns></returns>
+        Task DeleteAsync(long id);
+
     }
 }
