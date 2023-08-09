@@ -136,7 +136,26 @@ namespace Humin_Man.Services
 
             await _userManager.UpdateAsync(user);
         }
+
+        /// <summary>
+        /// Deletes the user asynchronously.
+        /// </summary>
+        /// <param name="id">The identifier of the user to be deleted.</param>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
+        public async Task DeleteAsync(long id)
+        {
+            var user = await _userManager.FindByIdAsync(id.ToString());
+
+            var result = await _userManager.DeleteAsync(user);
+            if (!result.Succeeded)
+            {
+                throw new HmException($"User deletion failed: {result.Errors.FirstOrDefault()?.Description}");
+            }
+        }
+
     }
+
 
 
 }

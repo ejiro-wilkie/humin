@@ -178,14 +178,31 @@ namespace Humin_Man.Controllers
 
 
         }
- /// <summary>
+        /// <summary>
         /// Deletes this instance.
         /// </summary>
         /// <returns></returns>
         [HttpPost("Delete")]
-        public IActionResult Delete(long id)
+        public async Task<IActionResult> Delete(long id)
         {
-            throw new NotImplementedException(); // you should implement this yourself. 
+            try
+            {
+                await _userService.DeleteAsync(id);
+                TempData["success"] = "User deleted successfully";
+            }
+            catch (HmException eppException)
+            {
+                Logger.LogError(eppException, "A controlled error happened.");
+                TempData["error"] = eppException.Message;
+            }
+            catch (Exception e)
+            {
+                var message = "An unknown error happened.";
+                Logger.LogCritical(e, message);
+                TempData["error"] = WebMessageConstant.UnexpectedErrorOccurred;
+            }
+            return RedirectToAction("Index");
         }
+
     }
 }

@@ -50,7 +50,7 @@
                                 <td>@user.Email</td>
                                 <td>
                                     <div class="btn-group">
-                                        <a href="javascript:;" class="btn btn-info delete-user-btn" data-id="1"><i class="fas fa-trash"></i></a>
+                                            <a href="javascript:;" class="btn btn-info delete-user-btn" data-id="@user.Id"><i class="fas fa-trash"></i></a>
 
                                         <a asp-action="Update" asp-controller="User" asp-route-id="@user.Id" class="btn btn-info"><i class="fas fa-edit"></i></a>
                                     </div>
