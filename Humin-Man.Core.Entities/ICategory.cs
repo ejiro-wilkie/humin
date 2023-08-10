@@ -17,13 +17,5 @@ namespace Humin_Man.Core.Entities
         /// </value>
         string Name { get; set; }
 
-
-        /// <summary>
-        /// Gets or sets the category identifier.
-        /// </summary>
-        /// <value>
-        /// The country identifier.
-        /// </value>
-        long CategoryId { get; set; }
     }
 }

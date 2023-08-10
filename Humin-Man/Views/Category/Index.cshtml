@@ -57,19 +57,19 @@
                         <table id="example1" class="table table-bordered table-hover">
                             <thead>
                                 <tr>
-                                    <th>Id</th>
+                                    <th>id</th>
                                     <th>Category</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="category in categories" ng-class="{selected: category.categoryId === data.selectedRow}" ng-cloak>
-                                    <td>{{category.categoryId}}</td>
+                                <tr ng-repeat="category in categories" ng-class="{selected: category.id === data.selectedRow}" ng-cloak>
+                                    <td>{{category.id}}</td>
                                     <td>{{category.name}}</td>
                                     <td>
                                         <div class="btn-group">
                                             <button type="button" class="btn btn-info" confirmed-click="deleteCategory(category)" ng-confirm-click="Are you sure you want to delete?"><i class="fas fa-trash"></i></button>
-                                            <button type="button" class="btn btn-info" ng-click="editCategory(category);rowHighlighted(category.categoryId)"><i class="fas fa-edit"></i></button>
+                                            <button type="button" class="btn btn-info" ng-click="editCategory(category);rowHighlighted(category.id)"><i class="fas fa-edit"></i></button>
                                         </div>
                                     </td>
                                 </tr>

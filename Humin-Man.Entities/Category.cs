@@ -16,13 +16,6 @@ namespace Humin_Man.Entities
         /// </value>
         public string Name { get; set; }
 
-        /// <summary>
-        /// Gets or sets the category identifier.
-        /// </summary>
-        /// <value>
-        /// The category identifier.
-        /// </value>
-        public long CategoryId { get; set; }
 
     }
 }

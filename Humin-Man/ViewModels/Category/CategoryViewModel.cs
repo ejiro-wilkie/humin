@@ -16,7 +16,7 @@ namespace Humin_Man.ViewModels.Category
         /// <value>
         /// The category identifier.
         /// </value>
-        public long CategoryId { get; set; }
+        public long Id { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the category.

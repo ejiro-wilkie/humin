@@ -18,7 +18,7 @@ namespace Humin_Man.Converters
         public ICollection<CategoryOutputViewModel> Convert(ICollection<CategoryOutputModel> categories)
             => categories?.Select(c => new CategoryOutputViewModel
             {
-                CategoryId = c.CategoryId,
+                Id = c.Id,
                 Name = c.Name
             }).ToList();
 
@@ -30,7 +30,7 @@ namespace Humin_Man.Converters
         public AddCategoryInputModel Convert(AddCategoryInputViewModel input)
             => new AddCategoryInputModel
             {
-                CategoryId = input.CategoryId,
+                Id = input.Id,
                 Name = input.Name
             };
 
@@ -42,7 +42,7 @@ namespace Humin_Man.Converters
         public UpdateCategoryInputModel Convert(UpdateCategoryInputViewModel input)
             => new UpdateCategoryInputModel
             {
-                CategoryId = input.CategoryId,
+                Id = input.Id,
                 Name = input.Name
             };
     }

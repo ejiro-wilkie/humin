@@ -67,7 +67,7 @@ namespace Humin_Man.Services
         /// <exception cref="System.NotImplementedException"></exception>
         public async Task DeleteAsync(long id)
         {
-            var category = await UnitOfWork.FirstOrDefaultAsync<Category>(c => c.CategoryId == id)
+            var category = await UnitOfWork.FirstOrDefaultAsync<Category>(c => c.Id == id)
                 ?? throw new EntityNotFoundHmException(nameof(Category), id);
 
             UnitOfWork.SoftDelete(category);
@@ -82,7 +82,7 @@ namespace Humin_Man.Services
         /// <exception cref="System.NotImplementedException"></exception>
         public async Task<CategoryOutputModel> GetAsync(long id)
         {
-            var category = await UnitOfWork.FirstOrDefaultAsync<Category>(c => c.CategoryId == id)
+            var category = await UnitOfWork.FirstOrDefaultAsync<Category>(c => c.Id == id)
                 ?? throw new EntityNotFoundHmException(nameof(Category), id);
 
             return _categoryConverter.EntityToModel(category);
@@ -107,7 +107,7 @@ namespace Humin_Man.Services
         /// <exception cref="EntityNotFoundHmException">Category</exception>
         public async Task UpdateAsync(long id, UpdateCategoryInputModel input)
         {
-            var category = await UnitOfWork.FirstOrDefaultAsync<Category>(c => c.CategoryId == id)
+            var category = await UnitOfWork.FirstOrDefaultAsync<Category>(c => c.Id == id)
                 ?? throw new EntityNotFoundHmException(nameof(Category), id);
 
             category.Name = input.Name;
