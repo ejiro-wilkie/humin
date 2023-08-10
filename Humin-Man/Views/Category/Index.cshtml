@@ -1,0 +1,90 @@
+﻿@{
+    ViewData["Title"] = "Category";
+}
+
+@section Scripts
+    {
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+    <script src="~/js/pages/category.js" asp-append-version="true"></script>
+}
+
+@section Styles
+    {
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.0.2/dist/sweetalert2.min.css">
+}
+
+<div ng-app="App" ng-controller="category" ng-init="init()">
+    <div class="row">
+        <!-- left column -->
+        <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title" ng-cloak>
+                        <span ng-show="data.isUpdate == false">Create</span>
+                        <span ng-show="data.isUpdate == true">Edit</span>
+                    </h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <form name="categoryForm">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <!-- text input -->
+                                <div class="form-group">
+                                    <label>Name</label>
+                                    <input type="text" class="form-control" placeholder="Enter " name="name" ng-model="category.name" ng-maxlength="10" ng-minlength="5" required>
+                                    <span class="text-danger pt-2" ng-cloak ng-show="categoryForm.name.$error.maxlength||categoryForm.name.$error.minlength">Category name must be between 5 and 10</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer" ng-cloak>
+                            <button type="submit" class="btn btn-primary float-right" ng-click="storeCategory()" ng-show="data.isUpdate == false" ng-disabled="categoryForm.$invalid">Save</button>
+                            <button type="submit" class="btn btn-primary float-right" ng-show="data.isUpdate == true" ng-disabled="categoryForm.$invalid" ng-click="updateCategory()">Update</button>
+                            <button type="submit" class="btn btn-danger float-right mr-2" ng-click="reset()">Reset</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="content">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <table id="example1" class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Category</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="category in categories" ng-class="{selected: category.categoryId === data.selectedRow}" ng-cloak>
+                                    <td>{{category.categoryId}}</td>
+                                    <td>{{category.name}}</td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-info" confirmed-click="deleteCategory(category)" ng-confirm-click="Are you sure you want to delete?"><i class="fas fa-trash"></i></button>
+                                            <button type="button" class="btn btn-info" ng-click="editCategory(category);rowHighlighted(category.categoryId)"><i class="fas fa-edit"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div ng-show="categories.length== 0" ng-cloak class="text-center p-3 border-dark">  No data found </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<style>
+    .selected {
+        background: #dee2e6;
+    }
+</style>
