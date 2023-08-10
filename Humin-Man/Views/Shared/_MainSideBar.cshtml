@@ -38,6 +38,14 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a asp-action="Index" asp-controller="Category" class="nav-link @Html.ViewContext.IsSelected("Category","Index")">
+                        <i class="nav-icon fas fa-list"></i>
+                        <p>
+                            Category
+                        </p>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

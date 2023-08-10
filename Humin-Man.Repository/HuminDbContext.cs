@@ -29,6 +29,14 @@ namespace Humin_Man.Repository
         public DbSet<Company> Companies { get; set; }
 
         /// <summary>
+        /// Gets or sets the categories.
+        /// </summary>
+        /// <value>
+        /// The categories.
+        /// </value>
+        public DbSet<Category> Categories { get; set; }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="HuminDbContext"/> class.
         /// </summary>
         /// <param name="options">The options.</param>
@@ -51,6 +59,7 @@ namespace Humin_Man.Repository
                     .WithMany()
                     .HasForeignKey(country => country.CountryId);
             });
+            builder.Entity<Category>();
         }
     }
 }
