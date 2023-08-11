@@ -128,7 +128,8 @@ namespace Humin_Man.Services
                 throw new EntityNotFoundHmException(nameof(Country), input.CountryId);
 
             shop.Name = input.Name;
-            shop.CountryId = id;
+            shop.CountryId = input.CountryId;
+            shop.IsLocked = input.IsLocked;
 
             UnitOfWork.Update(shop);
             await UnitOfWork.SaveAsync();

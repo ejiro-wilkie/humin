@@ -40,5 +40,21 @@ namespace Humin_Man.Core.Entities
         /// The country identifier.
         /// </value>
         long CountryId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the capacity.
+        /// </summary>
+        /// <value>
+        /// The capacity.
+        /// </value>
+        public int Capacity { get; set; }
+
+        /// <summary>
+        /// Gets or sets the IsLocked flag.
+        /// </summary>
+        /// <value>
+        /// The IsLocked value.
+        /// </value>
+        public bool IsLocked { get; set; }
     }
 }

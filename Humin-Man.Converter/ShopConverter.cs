@@ -17,6 +17,8 @@ namespace Humin_Man.Converter
             {
                 Id = entity.Id,
                 Name = entity.Name,
+                Capacity = entity.Capacity,
+                IsLocked = entity.IsLocked,
                 Country = new CountryModel
                 {
                     Name = entity.Country.Name,

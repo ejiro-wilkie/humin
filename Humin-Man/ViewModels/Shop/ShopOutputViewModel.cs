@@ -33,5 +33,21 @@ namespace Humin_Man.ViewModels.Shop
         /// The country.
         /// </value>
         public CountryViewModel Country { get; set; }
+
+        /// <summary>
+        /// Gets or sets the capacity.
+        /// </summary>
+        /// <value>
+        /// The capacity.
+        /// </value>
+        public int Capacity { get; set; }
+
+        /// <summary>
+        /// Gets or sets the IsLocked flag.
+        /// </summary>
+        /// <value>
+        /// The IsLocked value.
+        /// </value>
+        public bool IsLocked { get; set; }
     }
 }

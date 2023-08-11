@@ -25,6 +25,8 @@ namespace Humin_Man.Converters
                     Id = c.Country.Id,
                     Name = c.Country.Name
                 },
+                Capacity = c.Capacity,
+                IsLocked = c.IsLocked,
                 Id = c.Id
             }).ToList();
 
