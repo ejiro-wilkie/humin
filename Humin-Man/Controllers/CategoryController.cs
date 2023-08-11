@@ -20,7 +20,6 @@ namespace Humin_Man.Controllers
     [Route("[Controller]")]
     public class CategoryController : BaseController
     {
-        // TODO: Replace with services you need
         private readonly ICategoryService _categoryService;
         private readonly CategoryModelConverter _CategoryModelConverter;
 

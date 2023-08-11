@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Humin_Man.ViewModels.Company
+namespace Humin_Man.ViewModels.Shop
 {
     /// <summary>
-    /// Class that represents the company output view model.
+    /// Class that represents the shop output view model.
     /// </summary>
-    public class CompanyOutputViewModel
+    public class ShopOutputViewModel
     {
         /// <summary>
         /// Gets or sets the identifier.
@@ -33,5 +33,21 @@ namespace Humin_Man.ViewModels.Company
         /// The country.
         /// </value>
         public CountryViewModel Country { get; set; }
+
+        /// <summary>
+        /// Gets or sets the capacity.
+        /// </summary>
+        /// <value>
+        /// The capacity.
+        /// </value>
+        public int Capacity { get; set; }
+
+        /// <summary>
+        /// Gets or sets the IsLocked flag.
+        /// </summary>
+        /// <value>
+        /// The IsLocked value.
+        /// </value>
+        public bool IsLocked { get; set; }
     }
 }

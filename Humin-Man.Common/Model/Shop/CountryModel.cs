@@ -1,4 +1,4 @@
-﻿namespace Humin_Man.Common.Model.Company
+﻿namespace Humin_Man.Common.Model.Shop
 {
     /// <summary>
     /// Class that represents the country model.

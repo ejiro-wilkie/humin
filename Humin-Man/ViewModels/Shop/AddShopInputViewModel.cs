@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Humin_Man.Core.Entities
+﻿namespace Humin_Man.ViewModels.Shop
 {
     /// <summary>
-    /// Class that represents the company
+    /// Class that represents the add shop input view model.
     /// </summary>
-    public interface ICompany : IBaseEntity
+    public class AddShopInputViewModel
     {
         /// <summary>
         /// Gets or sets the name.
@@ -15,7 +11,7 @@ namespace Humin_Man.Core.Entities
         /// <value>
         /// The name.
         /// </value>
-        string Name { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the image.
@@ -23,15 +19,7 @@ namespace Humin_Man.Core.Entities
         /// <value>
         /// The image.
         /// </value>
-        string Image { get; set; }
-
-        /// <summary>
-        /// Gets or sets the country.
-        /// </summary>
-        /// <value>
-        /// The country.
-        /// </value>
-        ICountry Country { get; set; }
+        public string Image { get; set; }
 
         /// <summary>
         /// Gets or sets the country identifier.
@@ -39,6 +27,6 @@ namespace Humin_Man.Core.Entities
         /// <value>
         /// The country identifier.
         /// </value>
-        long CountryId { get; set; }
+        public long CountryId { get; set; }
     }
 }

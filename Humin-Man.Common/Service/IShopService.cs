@@ -1,38 +1,38 @@
-﻿using Humin_Man.Common.Model.Company;
+﻿using Humin_Man.Common.Model.Shop;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Humin_Man.Common.Service
 {
     /// <summary>
-    /// Class that defines the company service.
+    /// Class that defines the shop service.
     /// </summary>
     /// <seealso cref="Humin_Man.Common.Service.IBaseService" />
-    public interface ICompanyService : IBaseService
+    public interface IShopService : IBaseService
     {
         /// <summary>
         /// Adds the asynchronously.
         /// </summary>
         /// <returns></returns>
-        Task AddAsync(AddCompanyInputModel input);
+        Task AddAsync(AddShopInputModel input);
 
         /// <summary>
         /// Edits the asynchronously.
         /// </summary>
         /// <returns></returns>
-        Task UpdateAsync(long id, UpdateCompanyInputModel input);
+        Task UpdateAsync(long id, UpdateShopInputModel input);
 
         /// <summary>
         /// Gets the asynchronously.
         /// </summary>
         /// <returns></returns>
-        Task<CompanyOutputModel> GetAsync(long id);
+        Task<ShopOutputModel> GetAsync(long id);
 
         /// <summary>
         /// Gets the asynchronously.
         /// </summary>
         /// <returns></returns>
-        Task<ICollection<CompanyOutputModel>> GetAsync();
+        Task<ICollection<ShopOutputModel>> GetAsync();
 
         /// <summary>
         /// Deletes the asynchronously.

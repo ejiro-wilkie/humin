@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Humin_Man.ViewModels.Company
+namespace Humin_Man.ViewModels.Shop
 {
     /// <summary>
     /// Class that represents the country view model.

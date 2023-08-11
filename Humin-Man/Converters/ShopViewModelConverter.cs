@@ -1,23 +1,23 @@
-﻿using Humin_Man.Common.Model.Company;
-using Humin_Man.ViewModels.Company;
+﻿using Humin_Man.Common.Model.Shop;
+using Humin_Man.ViewModels.Shop;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace Humin_Man.Converters
 {
     /// <summary>
-    /// Company View Model Converter
+    /// Shop View Model Converter
     /// </summary>
-    public class CompanyViewModelConverter
+    public class ShopViewModelConverter
     {
 
         /// <summary>
-        /// Converts the specified companies.
+        /// Converts the specified shops.
         /// </summary>
-        /// <param name="companies">The companies.</param>
+        /// <param name="shops">The shops.</param>
         /// <returns></returns>
-        public ICollection<CompanyOutputViewModel> Convert(ICollection<CompanyOutputModel> companies)
-            => companies?.Select(c => new CompanyOutputViewModel
+        public ICollection<ShopOutputViewModel> Convert(ICollection<ShopOutputModel> shops)
+            => shops?.Select(c => new ShopOutputViewModel
             {
                 Name = c.Name,
                 Country = new CountryViewModel
@@ -25,6 +25,8 @@ namespace Humin_Man.Converters
                     Id = c.Country.Id,
                     Name = c.Country.Name
                 },
+                Capacity = c.Capacity,
+                IsLocked = c.IsLocked,
                 Id = c.Id
             }).ToList();
 
@@ -33,8 +35,8 @@ namespace Humin_Man.Converters
         /// </summary>
         /// <param name="input">The input.</param>
         /// <returns></returns>
-        public AddCompanyInputModel Convert(AddCompanyInputViewModel input)
-            => new AddCompanyInputModel
+        public AddShopInputModel Convert(AddShopInputViewModel input)
+            => new AddShopInputModel
             {
                 CountryId = input.CountryId,
                 Name = input.Name
@@ -45,8 +47,8 @@ namespace Humin_Man.Converters
         /// </summary>
         /// <param name="input">The input.</param>
         /// <returns></returns>
-        public UpdateCompanyInputModel Convert(UpdateCompanyInputViewModel input)
-            => new UpdateCompanyInputModel
+        public UpdateShopInputModel Convert(UpdateShopInputViewModel input)
+            => new UpdateShopInputModel
             {
                 Name = input.Name,
                 CountryId = input.CountryId

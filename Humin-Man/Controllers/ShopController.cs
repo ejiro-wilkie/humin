@@ -4,7 +4,7 @@ using Humin_Man.Constant;
 using Humin_Man.Converters;
 using Humin_Man.Exceptions;
 using Humin_Man.ViewModels;
-using Humin_Man.ViewModels.Company;
+using Humin_Man.ViewModels.Shop;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -14,26 +14,26 @@ using System.Threading.Tasks;
 namespace Humin_Man.Controllers
 {
     /// <summary>
-    /// Class that represents the company controller.
+    /// Class that represents the shop controller.
     /// </summary>
     /// <seealso cref="BaseController" />
     [Route("[Controller]")]
-    public class CompanyController : BaseController
+    public class ShopController : BaseController
     {
-        private readonly ICompanyService _companyService;
-        private readonly CompanyViewModelConverter _companyViewModelConverter;
+        private readonly IShopService _shopService;
+        private readonly ShopViewModelConverter _shopViewModelConverter;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CompanyController" /> class.
+        /// Initializes a new instance of the <see cref="ShopController" /> class.
         /// </summary>
         /// <param name="logger">The logger.</param>
-        /// <param name="companyService">The company service.</param>
+        /// <param name="shopService">The shop service.</param>
         /// <param name="context">The context.</param>
-        /// <param name="companyViewModelConverter">convert from company model to viewModel.</param>
-        public CompanyController(ILogger<CompanyController> logger, ICompanyService companyService, CompanyViewModelConverter companyViewModelConverter, IContext context) : base(logger, context)
+        /// <param name="shopViewModelConverter">convert from shop model to viewModel.</param>
+        public ShopController(ILogger<ShopController> logger, IShopService shopService, ShopViewModelConverter shopViewModelConverter, IContext context) : base(logger, context)
         {
-            _companyService = companyService;
-            _companyViewModelConverter = companyViewModelConverter;
+            _shopService = shopService;
+            _shopViewModelConverter = shopViewModelConverter;
         }
 
         /// <summary>
@@ -66,14 +66,14 @@ namespace Humin_Man.Controllers
         /// Indexes this instance.
         /// </summary>
         /// <returns></returns>
-        [HttpGet("/api/companies")]
-        public async Task<IActionResult> GetCompaniesAsync()
+        [HttpGet("/api/shops")]
+        public async Task<IActionResult> GetShopsAsync()
         {
             try
             {
-                var companiesModels = await _companyService.GetAsync();
-                var companiesViewModels = _companyViewModelConverter.Convert(companiesModels);
-                return Ok(companiesViewModels);
+                var shopsModels = await _shopService.GetAsync();
+                var shopsViewModels = _shopViewModelConverter.Convert(shopsModels);
+                return Ok(shopsViewModels);
             }
             catch (HmException eppException)
             {
@@ -89,16 +89,16 @@ namespace Humin_Man.Controllers
         }
 
         /// <summary>
-        /// Creates the company asynchronously.
+        /// Creates the shop asynchronously.
         /// </summary>
         /// <param name="input">The input.</param>
         /// <returns></returns>
-        [HttpPost("/api/company")]
-        public async Task<IActionResult> CreateCompanyAsync([FromBody] AddCompanyInputViewModel input)
+        [HttpPost("/api/shop")]
+        public async Task<IActionResult> CreateShopAsync([FromBody] AddShopInputViewModel input)
         {
             try
             {
-                await _companyService.AddAsync(_companyViewModelConverter.Convert(input));
+                await _shopService.AddAsync(_shopViewModelConverter.Convert(input));
 
                 return Ok();
             }
@@ -116,17 +116,17 @@ namespace Humin_Man.Controllers
         }
 
         /// <summary>
-        /// Updates the company asynchronously.
+        /// Updates the shop asynchronously.
         /// </summary>
         /// <param name="input">The input.</param>
         /// <param name="id">The identifier.</param>
         /// <returns></returns>
-        [HttpPost("/api/company/{id}/update")]
-        public async Task<IActionResult> UpdateCompanyAsync(long id, [FromBody] UpdateCompanyInputViewModel input)
+        [HttpPost("/api/shop/{id}/update")]
+        public async Task<IActionResult> UpdateShopAsync(long id, [FromBody] UpdateShopInputViewModel input)
         {
             try
             {
-                await _companyService.UpdateAsync(id, _companyViewModelConverter.Convert(input));
+                await _shopService.UpdateAsync(id, _shopViewModelConverter.Convert(input));
 
                 return Ok();
             }
@@ -145,16 +145,16 @@ namespace Humin_Man.Controllers
 
 
         /// <summary>
-        /// Delete the company asynchronously.
+        /// Delete the shop asynchronously.
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <returns></returns>
-        [HttpPost("/api/company/{id}/delete")]
-        public async Task<IActionResult> DeleteCompanyAsync(long id)
+        [HttpPost("/api/shop/{id}/delete")]
+        public async Task<IActionResult> DeleteShopAsync(long id)
         {
             try
             {
-                await _companyService.DeleteAsync(id);
+                await _shopService.DeleteAsync(id);
 
                 return Ok();
             }

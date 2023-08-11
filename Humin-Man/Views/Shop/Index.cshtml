@@ -1,11 +1,11 @@
 ﻿@{
-    ViewData["Title"] = "Company";
+    ViewData["Title"] = "Shop";
 }
 
 @section Scripts
 {
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
-    <script src="~/js/pages/company.js" asp-append-version="true"></script>
+    <script src="~/js/pages/shop.js" asp-append-version="true"></script>
 }
 
 @section Styles
@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.0.2/dist/sweetalert2.min.css">
 }
 
-<div ng-app="App" ng-controller="company" ng-init="init()">
+<div ng-app="App" ng-controller="shop" ng-init="init()">
     <div class="row">
         <!-- left column -->
         <div class="col-md-12">
@@ -29,26 +29,26 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <form name="companyForm">
+                    <form name="shopForm">
                         <div class="row">
                             <div class="col-sm-6">
                                 <!-- text input -->
                                 <div class="form-group">
                                     <label>Name</label>
-                                    <input type="text" class="form-control" placeholder="Enter " name="name" ng-model="company.name" ng-maxlength="10" ng-minlength="5" required>
-                                    <span class="text-danger pt-2" ng-cloak ng-show="companyForm.name.$error.maxlength||companyForm.name.$error.minlength">Company name must be between 5 and 10</span>
+                                    <input type="text" class="form-control" placeholder="Enter " name="name" ng-model="shop.name" ng-maxlength="10" ng-minlength="5" required>
+                                    <span class="text-danger pt-2" ng-cloak ng-show="shopForm.name.$error.maxlength||shopForm.name.$error.minlength">Shop name must be between 5 and 10</span>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label>Country</label>
-                                    <select class="custom-select" ng-options="country.id as country.name for country in countries" ng-model="company.countryId" required></select>
+                                    <select class="custom-select" ng-options="country.id as country.name for country in countries" ng-model="shop.countryId" required></select>
                                 </div>
                             </div>
                         </div>
                         <div class="card-footer" ng-cloak>
-                            <button type="submit" class="btn btn-primary float-right" ng-click="storeCompany()" ng-show="data.isUpdate == false" ng-disabled="companyForm.$invalid">Save</button>
-                            <button type="submit" class="btn btn-primary float-right" ng-show="data.isUpdate == true" ng-disabled="companyForm.$invalid" ng-click="updateCompany()">Update</button>
+                            <button type="submit" class="btn btn-primary float-right" ng-click="storeShop()" ng-show="data.isUpdate == false" ng-disabled="shopForm.$invalid">Save</button>
+                            <button type="submit" class="btn btn-primary float-right" ng-show="data.isUpdate == true" ng-disabled="shopForm.$invalid" ng-click="updateShop()">Update</button>
                             <button type="submit" class="btn btn-danger float-right mr-2" ng-click="reset()">Reset</button>
                         </div>
                     </form>
@@ -65,26 +65,30 @@
                             <thead>
                                 <tr>
                                     <th>Id</th>
-                                    <th>Company</th>
+                                    <th>Shop</th>
                                     <th>Country</th>
+                                    <th>Capacity</th>
+                                    <th>IsLocked</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="company in companies" ng-class="{selected: company.id === data.selectedRow}" ng-cloak>
-                                    <td>{{company.id}}</td>
-                                    <td>{{company.name}}</td>
-                                    <td>{{company.country.name}}</td>
+                                <tr ng-repeat="shop in shops" ng-class="{selected: shop.id === data.selectedRow}" ng-cloak>
+                                    <td>{{shop.id}}</td>
+                                    <td>{{shop.name}}</td>
+                                    <td>{{shop.country.name}}</td>
+                                    <td>{{shop.capacity}}</td>
+                                    <td>{{shop}}</td>
                                     <td>
                                         <div class="btn-group">
-                                            <button type="button" class="btn btn-info" confirmed-click="deleteCompany(company)" ng-confirm-click="Are you sure you want to delete?" ><i class="fas fa-trash"></i></button>
-                                            <button type="button" class="btn btn-info" ng-click="editCompany(company);rowHighlighted(company.id)"><i class="fas fa-edit"></i></button>
+                                            <button type="button" class="btn btn-info" confirmed-click="deleteShop(shop)" ng-confirm-click="Are you sure you want to delete?" ><i class="fas fa-trash"></i></button>
+                                            <button type="button" class="btn btn-info" ng-click="editShop(shop);rowHighlighted(shop.id)"><i class="fas fa-edit"></i></button>
                                         </div>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
-                        <div ng-show="companies.length== 0" ng-cloak class="text-center p-3 border-dark">  No data found </div>
+                        <div ng-show="shops.length== 0" ng-cloak class="text-center p-3 border-dark">  No data found </div>
                     </div>
                 </div>
             </div>

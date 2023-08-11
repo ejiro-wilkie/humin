@@ -24,15 +24,15 @@ app.directive('ngConfirmClick', [
         }
     ]);
 
-app.controller("company",
+app.controller("shop",
     function($scope, $http) {
         $scope.init = function() {
             $scope.countries = [];
-            $scope.companies = [];
-            $scope.company = {};
+            $scope.shops = [];
+            $scope.shop = {};
             $scope.data = { isUpdate: false, selectedRow: null };
             $scope.getCountries();
-            $scope.getCompanies();
+            $scope.getShops();
         };
 
         $scope.getCountries = function() {
@@ -48,10 +48,10 @@ app.controller("company",
             $scope.data.selectedRow = idSelected;
         };
 
-        $scope.deleteCompany = function(item) {
-            $http.post(`api/company/${item.id}/delete`).then(function(data, status, headers, config) {
-                    const index = $scope.companies.indexOf(item);
-                    $scope.companies.splice(index, 1);
+        $scope.deleteShop = function(item) {
+            $http.post(`api/shop/${item.id}/delete`).then(function(data, status, headers, config) {
+                    const index = $scope.shops.indexOf(item);
+                    $scope.shops.splice(index, 1);
                     huminAlert.successToast("deleted successfully");
                 },
                 function(error) {
@@ -59,40 +59,40 @@ app.controller("company",
                 });
         };
 
-        $scope.storeCompany = function() {
-            $http.post("/api/company", $scope.company).then(function(data, status, headers, config) {
+        $scope.storeShop = function() {
+            $http.post("/api/shop", $scope.shop).then(function(data, status, headers, config) {
                     huminAlert.success("added successfully");
                     $scope.reset();
-                    $scope.getCompanies();
+                    $scope.getShops();
                 },
                 function(error) {
                     huminAlert.error(error.data.message);
                 });
         };
 
-        $scope.updateCompany = function() {
-            console.log($scope.company);
-            $http.post(`/api/company/${$scope.company.id}/update`, $scope.company).then(
+        $scope.updateShop = function() {
+            console.log($scope.shop);
+            $http.post(`/api/shop/${$scope.shop.id}/update`, $scope.shop).then(
                 function(data, status, headers, config) {
                     huminAlert.success("updated successfully");
                     $scope.reset();
-                    $scope.getCompanies();
+                    $scope.getShops();
                 },
                 function(error) {
                     huminAlert.error(error.data.message);
                 });
         };
 
-        $scope.editCompany = function(company) {
+        $scope.editShop = function(shop) {
             $scope.data.isUpdate = true;
-            $scope.company.name = company.name;
-            $scope.company.id = company.id;
-            $scope.company.countryId = company.country.id;
+            $scope.shop.name = shop.name;
+            $scope.shop.id = shop.id;
+            $scope.shop.countryId = shop.country.id;
         };
 
-        $scope.getCompanies = function() {
-            $http.get("/api/companies").then(function(data, status, headers, config) {
-                    $scope.companies = data.data;
+        $scope.getShops = function() {
+            $http.get("/api/shops").then(function(data, status, headers, config) {
+                    $scope.shops = data.data;
                 },
                 function() {
                     huminAlert.errorhuminAlert(error.data.message);
@@ -101,6 +101,6 @@ app.controller("company",
 
         $scope.reset = function() {
             $scope.data = { isUpdate: false, selectedRow: null };
-            $scope.company = {};
+            $scope.shop = {};
         };
     });
