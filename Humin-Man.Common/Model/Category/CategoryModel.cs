@@ -3,7 +3,7 @@
     /// <summary>
     /// Class that represents the category output model.
     /// </summary>
-    public class CategoryOutputModel
+    public class CategoryModel
     {
         /// <summary>
         /// Gets or sets the identifier of the category.

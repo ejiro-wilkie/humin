@@ -42,7 +42,7 @@ namespace Humin_Man.Services
         /// <param name="input"></param>
         /// <returns></returns>
         /// <exception cref="System.NotImplementedException"></exception>
-        public async Task AddAsync(AddCategoryInputModel input)
+        public async Task AddAsync(CategoryModel input)
         {
             if (input == null)
                 throw new ArgumentNullHmException(nameof(input));
@@ -80,7 +80,7 @@ namespace Humin_Man.Services
         /// <param name="id"></param>
         /// <returns></returns>
         /// <exception cref="System.NotImplementedException"></exception>
-        public async Task<CategoryOutputModel> GetAsync(long id)
+        public async Task<CategoryModel> GetAsync(long id)
         {
             var category = await UnitOfWork.FirstOrDefaultAsync<Category>(c => c.Id == id)
                 ?? throw new EntityNotFoundHmException(nameof(Category), id);
@@ -93,7 +93,7 @@ namespace Humin_Man.Services
         /// </summary>
         /// <returns></returns>
         /// <exception cref="System.NotImplementedException"></exception>
-        public async Task<ICollection<CategoryOutputModel>> GetAsync()
+        public async Task<ICollection<CategoryModel>> GetAsync()
         {
             var categories = await UnitOfWork.Query<Category>().ToListAsync();
             return categories.Select(c => _categoryConverter.EntityToModel(c)).ToList();
@@ -105,7 +105,7 @@ namespace Humin_Man.Services
         /// <param name="id">The identifier.</param>
         /// <param name="input">The input.</param>
         /// <exception cref="EntityNotFoundHmException">Category</exception>
-        public async Task UpdateAsync(long id, UpdateCategoryInputModel input)
+        public async Task UpdateAsync(long id, CategoryModel input)
         {
             var category = await UnitOfWork.FirstOrDefaultAsync<Category>(c => c.Id == id)
                 ?? throw new EntityNotFoundHmException(nameof(Category), id);

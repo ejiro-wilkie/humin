@@ -8,12 +8,12 @@ namespace Humin_Man.Converter
     /// </summary>
     public class CategoryConverter
     {
-        public CategoryOutputModel EntityToModel(Category entity)
+        public CategoryModel EntityToModel(Category entity)
         {
             if (entity == null)
                 return null;
 
-            return new CategoryOutputModel
+            return new CategoryModel
             {
                 Id = entity.Id,
                 Name = entity.Name

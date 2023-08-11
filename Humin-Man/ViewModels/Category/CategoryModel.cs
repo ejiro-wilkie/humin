@@ -1,9 +1,9 @@
 ﻿namespace Humin_Man.ViewModels.Category
 {
     /// <summary>
-    /// Class that represents the category output view model.
+    /// Class that represents the add category input view model.
     /// </summary>
-    public class CategoryOutputViewModel
+    public class CategoryModel
     {
         /// <summary>
         /// Gets or sets the category identifier.
