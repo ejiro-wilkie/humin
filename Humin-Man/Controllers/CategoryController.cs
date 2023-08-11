@@ -22,7 +22,7 @@ namespace Humin_Man.Controllers
     {
         // TODO: Replace with services you need
         private readonly ICategoryService _categoryService;
-        private readonly CategoryViewModelConverter _categoryViewModelConverter;
+        private readonly CategoryModelConverter _CategoryModelConverter;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CategoryController" /> class.
@@ -30,12 +30,12 @@ namespace Humin_Man.Controllers
         /// <param name="logger">The logger.</param>
         /// <param name="categoryService">The category service.</param>
         /// <param name="context">The context.</param>
-        /// <param name="categoryViewModelConverter">convert from category model to viewModel.</param>
-        public CategoryController(ILogger<CategoryController> logger, ICategoryService categoryService, CategoryViewModelConverter categoryViewModelConverter, IContext context)
+        /// <param name="CategoryModelConverter">convert from category model to viewModel.</param>
+        public CategoryController(ILogger<CategoryController> logger, ICategoryService categoryService, CategoryModelConverter CategoryModelConverter, IContext context)
             : base(logger, context)
         {
             _categoryService = categoryService;
-            _categoryViewModelConverter = categoryViewModelConverter;
+            _CategoryModelConverter = CategoryModelConverter;
         }
 
         /// <summary>
@@ -75,8 +75,8 @@ namespace Humin_Man.Controllers
             try
             {
                 var categoryModels = await _categoryService.GetAsync();
-                var categoryViewModels = _categoryViewModelConverter.Convert(categoryModels);
-                return Ok(categoryViewModels);
+                var CategoryModels = _CategoryModelConverter.Convert(categoryModels);
+                return Ok(CategoryModels);
             }
             catch (HmException eppException)
             {
@@ -97,11 +97,11 @@ namespace Humin_Man.Controllers
         /// <param name="input">The input.</param>
         /// <returns></returns>
         [HttpPost("/api/category")]
-        public async Task<IActionResult> CreateCategoryAsync([FromBody] AddCategoryInputViewModel input)
+        public async Task<IActionResult> CreateCategoryAsync([FromBody] CategoryViewModel input)
         {
             try
             {
-                await _categoryService.AddAsync(_categoryViewModelConverter.Convert(input));
+                await _categoryService.AddAsync(_CategoryModelConverter.Convert(input));
                 return Ok();
             }
             catch (HmException eppException)
@@ -124,11 +124,11 @@ namespace Humin_Man.Controllers
         /// <param name="id">The identifier.</param>
         /// <returns></returns>
         [HttpPost("/api/category/{id}/update")]
-        public async Task<IActionResult> UpdateCategoryAsync(long id, [FromBody] UpdateCategoryInputViewModel input)
+        public async Task<IActionResult> UpdateCategoryAsync(long id, [FromBody] CategoryViewModel input)
         {
             try
             {
-                await _categoryService.UpdateAsync(id, _categoryViewModelConverter.Convert(input));
+                await _categoryService.UpdateAsync(id, _CategoryModelConverter.Convert(input));
                 return Ok();
             }
             catch (HmException eppException)

@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Humin_Man.ViewModels.Category
+﻿namespace Humin_Man.ViewModels.Category
 {
     /// <summary>
-    /// Class that represents the category view model.
+    /// Class that represents the add category input view model.
     /// </summary>
     public class CategoryViewModel
     {
@@ -22,7 +17,7 @@ namespace Humin_Man.ViewModels.Category
         /// Gets or sets the name of the category.
         /// </summary>
         /// <value>
-        /// The name of the category.
+        /// The name.
         /// </value>
         public string Name { get; set; }
     }

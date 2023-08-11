@@ -79,7 +79,7 @@ namespace Humin_Man.Extensions
             services.AddSingleton<UserConverter>();
             services.AddSingleton<UserViewModelConverter>();
             services.AddSingleton<CompanyViewModelConverter>();
-            services.AddSingleton<CategoryViewModelConverter>();
+            services.AddSingleton<CategoryModelConverter>();
 
             return services;
         }

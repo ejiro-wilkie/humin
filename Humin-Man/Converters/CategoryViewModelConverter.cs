@@ -8,42 +8,32 @@ namespace Humin_Man.Converters
     /// <summary>
     /// Category View Model Converter
     /// </summary>
-    public class CategoryViewModelConverter
+    public class CategoryModelConverter
     {
         /// <summary>
         /// Converts the specified categories.
         /// </summary>
         /// <param name="categories">The categories.</param>
         /// <returns></returns>
-        public ICollection<CategoryOutputViewModel> Convert(ICollection<CategoryOutputModel> categories)
-            => categories?.Select(c => new CategoryOutputViewModel
+        public ICollection<ViewModels.Category.CategoryViewModel> Convert(ICollection<Common.Model.Category.CategoryModel> categories)
+            => categories?.Select(c => new ViewModels.Category.CategoryViewModel
             {
                 Id = c.Id,
                 Name = c.Name
             }).ToList();
 
-        /// <summary>
-        /// Converts the specified input.
-        /// </summary>
-        /// <param name="input">The input.</param>
-        /// <returns></returns>
-        public AddCategoryInputModel Convert(AddCategoryInputViewModel input)
-            => new AddCategoryInputModel
-            {
-                Id = input.Id,
-                Name = input.Name
-            };
 
         /// <summary>
         /// Converts the specified input.
         /// </summary>
         /// <param name="input">The input.</param>
         /// <returns></returns>
-        public UpdateCategoryInputModel Convert(UpdateCategoryInputViewModel input)
-            => new UpdateCategoryInputModel
+        public Common.Model.Category.CategoryModel Convert(ViewModels.Category.CategoryViewModel input)
+            => new Common.Model.Category.CategoryModel
             {
                 Id = input.Id,
                 Name = input.Name
             };
+
     }
 }

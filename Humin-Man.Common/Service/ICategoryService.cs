@@ -15,7 +15,7 @@ namespace Humin_Man.Common.Service
         /// </summary>
         /// <param name="input">Input model for adding category.</param>
         /// <returns>Task representing the asynchronous operation.</returns>
-        Task AddAsync(AddCategoryInputModel input);
+        Task AddAsync(CategoryModel input);
 
         /// <summary>
         /// Edits the category asynchronously.
@@ -23,20 +23,20 @@ namespace Humin_Man.Common.Service
         /// <param name="id">The identifier for the category to edit.</param>
         /// <param name="input">Input model for updating category.</param>
         /// <returns>Task representing the asynchronous operation.</returns>
-        Task UpdateAsync(long id, UpdateCategoryInputModel input);
+        Task UpdateAsync(long id, CategoryModel input);
 
         /// <summary>
         /// Gets the category by identifier asynchronously.
         /// </summary>
         /// <param name="id">The identifier for the category to retrieve.</param>
         /// <returns>Output model for the requested category.</returns>
-        Task<CategoryOutputModel> GetAsync(long id);
+        Task<CategoryModel> GetAsync(long id);
 
         /// <summary>
         /// Gets all the categories asynchronously.
         /// </summary>
         /// <returns>List of output models for all categories.</returns>
-        Task<ICollection<CategoryOutputModel>> GetAsync();
+        Task<ICollection<CategoryModel>> GetAsync();
 
         /// <summary>
         /// Deletes the category by identifier asynchronously.
