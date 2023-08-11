@@ -1,7 +1,7 @@
 ﻿namespace Humin_Man.Exceptions
 {
     /// <summary>
-    /// Exception thrown when the company name doesn't match the requirement.
+    /// Exception thrown when the shop name doesn't match the requirement.
     /// </summary>
     /// <seealso cref="Humin_Man.Exceptions.HmException" />
     public class InvalidNameHmException : HmException
@@ -18,7 +18,7 @@
         /// Initializes a new instance of the <see cref="InvalidNameHmException"/> class.
         /// </summary>
         /// <param name="name">The name.</param>
-        public InvalidNameHmException(string name) : this($"The company name: {name} must not be less than 5 characters nor more than 10", name)
+        public InvalidNameHmException(string name) : this($"The shop name: {name} must not be less than 5 characters nor more than 10", name)
         {}
 
         /// <summary>

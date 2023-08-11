@@ -2,7 +2,7 @@
 using Humin_Man.Common.Service;
 using Humin_Man.Exceptions;
 using Humin_Man.ViewModels;
-using Humin_Man.ViewModels.Company;
+using Humin_Man.ViewModels.Shop;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -14,7 +14,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace Humin_Man.Controllers
 {
     /// <summary>
-    /// Class that represents the company controller.
+    /// Class that represents the shop controller.
     /// </summary>
     /// <seealso cref="BaseController" />
     [Route("Controller")]

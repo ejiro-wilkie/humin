@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Humin_Man.Repository.Configuration
 {
-    internal class CompanyConfiguration : IEntityTypeConfiguration<Company>
+    internal class ShopConfiguration : IEntityTypeConfiguration<Shop>
     {
-        public void Configure(EntityTypeBuilder<Company> builder)
+        public void Configure(EntityTypeBuilder<Shop> builder)
         {
             builder.HasQueryFilter(e => !e.IsDeleted);
 

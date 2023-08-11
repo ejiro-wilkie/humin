@@ -31,7 +31,7 @@ namespace Humin_Man.Controllers
         /// <param name="logger">The logger.</param>
         /// <param name="context">The context.</param>
         /// <param name="userService">The user service.</param>
-        /// <param name="userViewModelConverter">company view model.</param>
+        /// <param name="userViewModelConverter">shop view model.</param>
         public UserController(ILogger<UserController> logger, IContext context, IUserService userService,
             UserViewModelConverter userViewModelConverter) : base(logger, context)
         {

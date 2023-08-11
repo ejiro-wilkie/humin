@@ -21,12 +21,12 @@ namespace Humin_Man.Repository
         public DbSet<Country> Countries { get; set; }
 
         /// <summary>
-        /// Gets or sets the companies.
+        /// Gets or sets the shops.
         /// </summary>
         /// <value>
-        /// The companies.
+        /// The shops.
         /// </value>
-        public DbSet<Company> Companies { get; set; }
+        public DbSet<Shop> Shops { get; set; }
 
         /// <summary>
         /// Gets or sets the categories.
@@ -51,9 +51,9 @@ namespace Humin_Man.Repository
         {
             base.OnModelCreating(builder);
 
-            builder.ApplyConfiguration(new CompanyConfiguration());
+            builder.ApplyConfiguration(new ShopConfiguration());
 
-            builder.Entity<Company>(c =>
+            builder.Entity<Shop>(c =>
             {
                 c.HasOne(country => (Country)country.Country)
                     .WithMany()

@@ -68,17 +68,17 @@ namespace Humin_Man.Extensions
                 return new Context(id);
             });
 
-            services.AddTransient<ICompanyService, CompanyService>();
+            services.AddTransient<IShopService, ShopService>();
             services.AddTransient<IAuthService, AuthService>();
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<ICountryService, CountryService>();
             services.AddTransient<ICategoryService, CategoryService>();
 
-            services.AddSingleton<CompanyConverter>();
+            services.AddSingleton<ShopConverter>();
             services.AddSingleton<CategoryConverter>();
             services.AddSingleton<UserConverter>();
             services.AddSingleton<UserViewModelConverter>();
-            services.AddSingleton<CompanyViewModelConverter>();
+            services.AddSingleton<ShopViewModelConverter>();
             services.AddSingleton<CategoryModelConverter>();
 
             return services;
