@@ -3,7 +3,7 @@
     /// <summary>
     /// Class that represents the add category input view model.
     /// </summary>
-    public class CategoryModel
+    public class CategoryViewModel
     {
         /// <summary>
         /// Gets or sets the category identifier.

@@ -97,7 +97,7 @@ namespace Humin_Man.Controllers
         /// <param name="input">The input.</param>
         /// <returns></returns>
         [HttpPost("/api/category")]
-        public async Task<IActionResult> CreateCategoryAsync([FromBody] CategoryModel input)
+        public async Task<IActionResult> CreateCategoryAsync([FromBody] CategoryViewModel input)
         {
             try
             {
@@ -124,7 +124,7 @@ namespace Humin_Man.Controllers
         /// <param name="id">The identifier.</param>
         /// <returns></returns>
         [HttpPost("/api/category/{id}/update")]
-        public async Task<IActionResult> UpdateCategoryAsync(long id, [FromBody] CategoryModel input)
+        public async Task<IActionResult> UpdateCategoryAsync(long id, [FromBody] CategoryViewModel input)
         {
             try
             {

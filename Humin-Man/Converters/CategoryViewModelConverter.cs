@@ -15,8 +15,8 @@ namespace Humin_Man.Converters
         /// </summary>
         /// <param name="categories">The categories.</param>
         /// <returns></returns>
-        public ICollection<ViewModels.Category.CategoryModel> Convert(ICollection<Common.Model.Category.CategoryModel> categories)
-            => categories?.Select(c => new ViewModels.Category.CategoryModel
+        public ICollection<ViewModels.Category.CategoryViewModel> Convert(ICollection<Common.Model.Category.CategoryModel> categories)
+            => categories?.Select(c => new ViewModels.Category.CategoryViewModel
             {
                 Id = c.Id,
                 Name = c.Name
@@ -28,7 +28,7 @@ namespace Humin_Man.Converters
         /// </summary>
         /// <param name="input">The input.</param>
         /// <returns></returns>
-        public Common.Model.Category.CategoryModel Convert(ViewModels.Category.CategoryModel input)
+        public Common.Model.Category.CategoryModel Convert(ViewModels.Category.CategoryViewModel input)
             => new Common.Model.Category.CategoryModel
             {
                 Id = input.Id,
