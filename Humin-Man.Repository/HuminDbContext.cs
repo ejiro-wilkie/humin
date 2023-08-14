@@ -59,6 +59,19 @@ namespace Humin_Man.Repository
                     .WithMany()
                     .HasForeignKey(country => country.CountryId);
             });
+
+            builder.Entity<Product>(p =>
+            {
+                p.HasOne(prod => prod.Category)
+                 .WithMany(cat => cat.Products)
+                 .HasForeignKey(prod => prod.CategoryId);
+
+                p.Property(prod => prod.SellPrice)
+                .HasPrecision(8, 2);
+                p.Property(prod => prod.BuyPrice)
+                .HasPrecision(8, 2);
+            });
+
             builder.Entity<Category>();
         }
     }
