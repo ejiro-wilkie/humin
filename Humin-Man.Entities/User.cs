@@ -1,6 +1,6 @@
 ﻿using Humin_Man.Core.Entities;
 using Microsoft.AspNetCore.Identity;
-
+using System;
 
 namespace Humin_Man.Entities
 {
@@ -42,6 +42,15 @@ namespace Humin_Man.Entities
         /// The last name.
         /// </value>
         public string LastName { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating when this instance was last updated.
+        /// </summary>
+        /// <value>
+        /// The datetime.
+        /// </value>
+   
+        public DateTime UpdatedAt { get; set; }
 
         /// <summary>
         /// Converts to string.

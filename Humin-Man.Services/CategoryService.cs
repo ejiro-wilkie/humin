@@ -7,6 +7,7 @@ using Humin_Man.Entities;
 using Humin_Man.Exceptions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -70,6 +71,8 @@ namespace Humin_Man.Services
             var category = await UnitOfWork.FirstOrDefaultAsync<Category>(c => c.Id == id)
                 ?? throw new EntityNotFoundHmException(nameof(Category), id);
 
+            category.DeletedAt = DateTime.Now;
+
             UnitOfWork.SoftDelete(category);
             await UnitOfWork.SaveAsync();
         }
@@ -111,6 +114,7 @@ namespace Humin_Man.Services
                 ?? throw new EntityNotFoundHmException(nameof(Category), id);
 
             category.Name = input.Name;
+            category.UpdatedAt = DateTime.Now;
 
             UnitOfWork.Update(category);
             await UnitOfWork.SaveAsync();

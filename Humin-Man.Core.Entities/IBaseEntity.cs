@@ -1,4 +1,6 @@
-﻿namespace Humin_Man.Core.Entities
+﻿using System;
+
+namespace Humin_Man.Core.Entities
 {
     /// <summary>
     /// Class that defines the base entity.
@@ -20,5 +22,15 @@
         ///   <c>true</c> if this instance is deleted; otherwise, <c>false</c>.
         /// </value>
         bool IsDeleted { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating when this instance was last updated.
+        /// </summary>
+        /// <value>
+        /// The datetime.
+        /// </value>
+        /// <exception cref="NotImplementedException">
+        /// </exception>
+        public DateTime UpdatedAt { get; set; }
     }
 }

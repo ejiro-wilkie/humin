@@ -23,7 +23,8 @@ namespace Humin_Man.Converter
                 {
                     Name = entity.Country.Name,
                     Id = entity.CountryId
-                }
+                },
+                UpdatedAt = entity.UpdatedAt,
             };
         }
     }

@@ -1,4 +1,6 @@
-﻿namespace Humin_Man.Common.Model.Shop
+﻿using System;
+
+namespace Humin_Man.Common.Model.Shop
 {
     /// <summary>
     /// Class that represent the shop output model.
@@ -44,5 +46,15 @@
         /// The IsLocked value.
         /// </value>
         public bool IsLocked { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating when this instance was last updated.
+        /// </summary>
+        /// <value>
+        /// The datetime.
+        /// </value>
+        /// <exception cref="NotImplementedException">
+        /// </exception>
+        public DateTime UpdatedAt { get; set; }
     }
 }
