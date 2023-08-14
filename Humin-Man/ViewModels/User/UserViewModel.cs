@@ -1,4 +1,6 @@
-﻿namespace Humin_Man.ViewModels.User
+﻿using System;
+
+namespace Humin_Man.ViewModels.User
 {
     /// <summary>
     /// Class that represents the country view model.
@@ -44,6 +46,15 @@
         /// The name of the user.
         /// </value>
         public string UserName { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating when this instance was last updated.
+        /// </summary>
+        /// <value>
+        /// The datetime.
+        /// </value>
+        public DateTime UpdatedAt { get; set; }
+
         /// <summary>
         /// Gets or sets the id of the user.
         /// </summary>

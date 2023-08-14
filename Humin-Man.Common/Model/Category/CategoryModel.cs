@@ -1,4 +1,6 @@
-﻿namespace Humin_Man.Common.Model.Category
+﻿using System;
+
+namespace Humin_Man.Common.Model.Category
 {
     /// <summary>
     /// Class that represents the category output model.
@@ -20,5 +22,13 @@
         /// The name.
         /// </value>
         public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating when this instance was last updated.
+        /// </summary>
+        /// <value>
+        /// The datetime.
+        /// </value>
+        public DateTime UpdatedAt { get; set; }
     }
 }

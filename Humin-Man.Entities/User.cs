@@ -59,6 +59,6 @@ namespace Humin_Man.Entities
         /// A <see cref="System.String" /> that represents this instance.
         /// </returns>
         public override string ToString() => $"{nameof(Id)}:{Id}|{nameof(Email)}:{Email}|{nameof(EmailConfirmed)}:{EmailConfirmed}|{nameof(NormalizedEmail)}:{NormalizedEmail}" +
-            $"|{nameof(UserName)}:{UserName}|{nameof(PhoneNumber)}:{PhoneNumber}|{nameof(PhoneNumberConfirmed)}:{PhoneNumberConfirmed}|{nameof(Image)}:[{Image}]";
+            $"|{nameof(UserName)}:{UserName}|{nameof(PhoneNumber)}:{PhoneNumber}|{nameof(PhoneNumberConfirmed)}:{PhoneNumberConfirmed}|{nameof(Image)}:[{Image}]|{nameof(UpdatedAt)}:{UpdatedAt}";
     }
 }

@@ -133,6 +133,7 @@ namespace Humin_Man.Services
             user.UserName = input.UserName;
             user.Email = input.Email;
             user.PhoneNumber = input.PhoneNumber;
+            user.UpdatedAt = DateTime.Now;
 
             await _userManager.UpdateAsync(user);
         }

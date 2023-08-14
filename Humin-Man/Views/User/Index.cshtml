@@ -36,6 +36,7 @@
                             <th>LastName</th>
                             <th>PhoneNumber</th>
                             <th>Email</th>
+                            <th>Last Updated</th>
                             <th>Actions</th>
                         </tr>
                         </thead>
@@ -48,6 +49,8 @@
                                 <td>@user.LastName</td>
                                 <td>@user.PhoneNumber</td>
                                 <td>@user.Email</td>
+                                <td>@user.UpdatedAt.ToString("MMM dd, yyyy h:mm tt")</td>
+
                                 <td>
                                     <div class="btn-group">
                                             <a href="javascript:;" class="btn btn-info delete-user-btn" data-id="@user.Id"><i class="fas fa-trash"></i></a>

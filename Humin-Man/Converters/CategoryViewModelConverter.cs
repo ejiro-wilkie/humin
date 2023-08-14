@@ -19,7 +19,8 @@ namespace Humin_Man.Converters
             => categories?.Select(c => new ViewModels.Category.CategoryViewModel
             {
                 Id = c.Id,
-                Name = c.Name
+                Name = c.Name,
+                UpdatedAt = c.UpdatedAt,
             }).ToList();
 
 

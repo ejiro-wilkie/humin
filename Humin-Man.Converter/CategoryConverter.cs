@@ -16,7 +16,8 @@ namespace Humin_Man.Converter
             return new CategoryModel
             {
                 Id = entity.Id,
-                Name = entity.Name
+                Name = entity.Name,
+                UpdatedAt = entity.UpdatedAt,
             };
         }
     }
