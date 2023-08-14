@@ -69,6 +69,7 @@
                                     <th>Country</th>
                                     <th>Capacity</th>
                                     <th>IsLocked</th>
+                                    <th>Last Updated</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -78,7 +79,8 @@
                                     <td>{{shop.name}}</td>
                                     <td>{{shop.country.name}}</td>
                                     <td>{{shop.capacity}}</td>
-                                    <td>{{shop}}</td>
+                                    <td>{{shop.isLocked}}</td>
+                                    <td>{{shop.updatedAt | date:'MMM dd, yyyy h:mm a'}}</td>
                                     <td>
                                         <div class="btn-group">
                                             <button type="button" class="btn btn-info" confirmed-click="deleteShop(shop)" ng-confirm-click="Are you sure you want to delete?" ><i class="fas fa-trash"></i></button>

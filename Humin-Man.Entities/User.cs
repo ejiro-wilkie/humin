@@ -1,6 +1,6 @@
 ﻿using Humin_Man.Core.Entities;
 using Microsoft.AspNetCore.Identity;
-
+using System;
 
 namespace Humin_Man.Entities
 {
@@ -44,12 +44,21 @@ namespace Humin_Man.Entities
         public string LastName { get; set; }
 
         /// <summary>
+        /// Gets or sets a value indicating when this instance was last updated.
+        /// </summary>
+        /// <value>
+        /// The datetime.
+        /// </value>
+   
+        public DateTime UpdatedAt { get; set; }
+
+        /// <summary>
         /// Converts to string.
         /// </summary>
         /// <returns>
         /// A <see cref="System.String" /> that represents this instance.
         /// </returns>
         public override string ToString() => $"{nameof(Id)}:{Id}|{nameof(Email)}:{Email}|{nameof(EmailConfirmed)}:{EmailConfirmed}|{nameof(NormalizedEmail)}:{NormalizedEmail}" +
-            $"|{nameof(UserName)}:{UserName}|{nameof(PhoneNumber)}:{PhoneNumber}|{nameof(PhoneNumberConfirmed)}:{PhoneNumberConfirmed}|{nameof(Image)}:[{Image}]";
+            $"|{nameof(UserName)}:{UserName}|{nameof(PhoneNumber)}:{PhoneNumber}|{nameof(PhoneNumberConfirmed)}:{PhoneNumberConfirmed}|{nameof(Image)}:[{Image}]|{nameof(UpdatedAt)}:{UpdatedAt}";
     }
 }

@@ -27,6 +27,7 @@ namespace Humin_Man.Converters
                 },
                 Capacity = c.Capacity,
                 IsLocked = c.IsLocked,
+                UpdatedAt = c.UpdatedAt,
                 Id = c.Id
             }).ToList();
 

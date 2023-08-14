@@ -20,6 +20,7 @@ namespace Humin_Man.Converter
                 LastName = input.LastName,
                 UserName = input.UserName,
                 PhoneNumber = input.PhoneNumber,
+                UpdatedAt = input.UpdatedAt,
                 Id = input.Id
             };
         }

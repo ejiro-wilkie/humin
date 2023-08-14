@@ -1,4 +1,5 @@
 ﻿using Humin_Man.Core.Entities;
+using System;
 
 namespace Humin_Man.Entities
 {
@@ -27,5 +28,35 @@ namespace Humin_Man.Entities
         /// <exception cref="System.NotImplementedException">
         /// </exception>
         public bool IsDeleted { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating when this instance was created.
+        /// </summary>
+        /// <value>
+        /// The datetime.
+        /// </value>
+        /// <exception cref="System.NotImplementedException">
+        /// </exception>
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
+
+        /// <summary>
+        /// Gets or sets a value indicating when this instance was last updated.
+        /// </summary>
+        /// <value>
+        /// The datetime.
+        /// </value>
+        /// <exception cref="NotImplementedException">
+        /// </exception>
+        public DateTime UpdatedAt { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating when this instance was deleted.
+        /// </summary>
+        /// <value>
+        /// The datetime.
+        /// </value>
+        /// <exception cref="NotImplementedException">
+        /// </exception>
+        public DateTime DeletedAt { get; set; }
     }
 }

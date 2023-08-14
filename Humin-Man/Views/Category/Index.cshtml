@@ -59,6 +59,7 @@
                                 <tr>
                                     <th>id</th>
                                     <th>Category</th>
+                                    <th>Last Updated</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -66,6 +67,7 @@
                                 <tr ng-repeat="category in categories" ng-class="{selected: category.id === data.selectedRow}" ng-cloak>
                                     <td>{{category.id}}</td>
                                     <td>{{category.name}}</td>
+                                    <td>{{category.updatedAt | date:'MMM dd, yyyy h:mm a'}}</td>
                                     <td>
                                         <div class="btn-group">
                                             <button type="button" class="btn btn-info" confirmed-click="deleteCategory(category)" ng-confirm-click="Are you sure you want to delete?"><i class="fas fa-trash"></i></button>

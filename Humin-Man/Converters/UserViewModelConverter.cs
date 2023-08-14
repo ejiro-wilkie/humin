@@ -23,6 +23,7 @@ namespace Humin_Man.Converters
                 LastName = user.LastName,
                 UserName = user.UserName,
                 PhoneNumber = user.PhoneNumber,
+                UpdatedAt = user.UpdatedAt,
                 Id = user.Id
             }).ToList();
 
