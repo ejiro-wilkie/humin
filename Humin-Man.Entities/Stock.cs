@@ -3,10 +3,10 @@
 namespace Humin_Man.Entities
 {
     /// <summary>
-    /// Class that represents the shop entity.
+    /// Class that represents the stock entity.
     /// </summary>
     /// <seealso cref="Humin_Man.Entities.BaseEnetity" />
-    public class Shop : BaseEnetity, IShop
+    public class Stock : BaseEnetity, IStock
     {
         /// <summary>
         /// Gets or sets the name.
@@ -17,43 +17,43 @@ namespace Humin_Man.Entities
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the image.
-        /// </summary>
-        /// <value>
-        /// The image.
-        /// </value>
-        public string Image { get; set; }
-
-        /// <summary>
-        /// Gets or sets the country
+        /// Gets or sets the shop
         /// </summary>
         /// <value>
         /// The country.
         /// </value>
-        public virtual ICountry Country { get; set; }
+        public virtual IShop Shop { get; set; }
 
         /// <summary>
-        /// Gets or sets the country identifier.
+        /// Gets or sets the shop identifier.
         /// </summary>
         /// <value>
         /// The country identifier.
         /// </value>
-        public long CountryId { get; set; }
+        public long ShopId { get; set; }
 
         /// <summary>
-        /// Gets or sets the capacity.
+        /// Gets or sets the product
+        /// </summary>
+        /// <value>
+        /// The country.
+        /// </value>
+        public virtual IProduct Product { get; set; }
+
+        /// <summary>
+        /// Gets or sets the product identifier.
+        /// </summary>
+        /// <value>
+        /// The country identifier.
+        /// </value>
+        public long ProductId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the quantity.
         /// </summary>
         /// <value>
         /// The capacity.
         /// </value>
-        public int Capacity { get; set; }
-
-        /// <summary>
-        /// Gets or sets the IsLocked flag.
-        /// </summary>
-        /// <value>
-        /// The IsLocked value.
-        /// </value>
-        public bool IsLocked { get; set; }
+        public int Quantity { get; set; }
     }
 }

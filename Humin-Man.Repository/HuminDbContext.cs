@@ -37,6 +37,14 @@ namespace Humin_Man.Repository
         public DbSet<Product> Products { get; set; }
 
         /// <summary>
+        /// Gets or sets the stocks.
+        /// </summary>
+        /// <value>
+        /// The stocks.
+        /// </value>
+        public DbSet<Stock> Stocks { get; set; }
+
+        /// <summary>
         /// Gets or sets the categories.
         /// </summary>
         /// <value>
@@ -60,6 +68,7 @@ namespace Humin_Man.Repository
             base.OnModelCreating(builder);
 
             builder.ApplyConfiguration(new ShopConfiguration());
+            builder.ApplyConfiguration(new StockConfiguration());
 
             builder.Entity<Shop>(c =>
             {
@@ -78,6 +87,17 @@ namespace Humin_Man.Repository
                 .HasPrecision(18, 2);
                 c.Property(prod => prod.BuyPrice)
                 .HasPrecision(18, 2);
+            });
+
+            builder.Entity<Stock>(c =>
+            {
+                c.HasOne(product => (Product)product.Product)
+                    .WithMany()
+                    .HasForeignKey(product => product.ProductId);
+                c.HasOne(shop => (Shop)shop.Shop)
+                    .WithMany()
+                    .HasForeignKey(shop => shop.ShopId);
+
             });
         }
     }
