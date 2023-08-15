@@ -96,6 +96,9 @@ namespace Humin_Man.Repository.Migrations
                     b.Property<long>("CategoryId")
                         .HasColumnType("bigint");
 
+                    b.Property<long?>("CategoryId1")
+                        .HasColumnType("bigint");
+
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
@@ -121,6 +124,8 @@ namespace Humin_Man.Repository.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
+
+                    b.HasIndex("CategoryId1");
 
                     b.ToTable("Product");
                 });
@@ -386,10 +391,14 @@ namespace Humin_Man.Repository.Migrations
             modelBuilder.Entity("Humin_Man.Entities.Product", b =>
                 {
                     b.HasOne("Humin_Man.Entities.Category", "Category")
-                        .WithMany("Products")
+                        .WithMany()
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("Humin_Man.Entities.Category", null)
+                        .WithMany("Products")
+                        .HasForeignKey("CategoryId1");
 
                     b.Navigation("Category");
                 });

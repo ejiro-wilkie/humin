@@ -1,18 +1,21 @@
-﻿using Humin_Man.Core.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
+using Humin_Man.ViewModels.Category;
 
-namespace Humin_Man.Entities
+namespace Humin_Man.ViewModels.Product
 {
-   /// <summary>
-   /// Class that represents the product entity.
-   /// </summary>
-   /// <seealso cref="Humin_Man.Entities.BaseEnetity" />
-    public class Product : BaseEnetity, IProduct
+    /// <summary>
+    /// Class that represents the add product view model.
+    /// </summary>
+    public class ProductViewModel
     {
+        /// <summary>
+        /// Gets or sets the product identifier.
+        /// </summary>
+        /// <value>
+        /// The category identifier.
+        /// </value>
+        public long Id { get; set; }
+
         /// <summary>
         /// Gets or sets the name.
         /// </summary>
@@ -59,6 +62,14 @@ namespace Humin_Man.Entities
         /// <value>
         /// The capacity.
         /// </value>
-        public virtual ICategory Category { get; set; }
+        public CategoryViewModel Category { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating when this instance was last updated.
+        /// </summary>
+        /// <value>
+        /// The datetime.
+        /// </value>
+        public DateTime UpdatedAt { get; set; }
     }
 }

@@ -49,5 +49,13 @@ namespace Humin_Man.Core.Entities
         /// </value>
         long CategoryId { get; set; }
 
+        /// <summary>
+        /// Gets or sets the category.
+        /// </summary>
+        /// <value>
+        /// The country.
+        /// </value>
+        ICategory Category{ get; set; }
+
     }
 }

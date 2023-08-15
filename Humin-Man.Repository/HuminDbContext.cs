@@ -52,6 +52,7 @@ namespace Humin_Man.Repository
             base.OnModelCreating(builder);
 
             builder.ApplyConfiguration(new ShopConfiguration());
+            builder.ApplyConfiguration(new ProductConfiguration());
 
             builder.Entity<Shop>(c =>
             {
@@ -62,9 +63,7 @@ namespace Humin_Man.Repository
 
             builder.Entity<Product>(p =>
             {
-                p.HasOne(prod => prod.Category)
-                 .WithMany(cat => cat.Products)
-                 .HasForeignKey(prod => prod.CategoryId);
+
 
                 p.Property(prod => prod.SellPrice)
                 .HasPrecision(8, 2);
