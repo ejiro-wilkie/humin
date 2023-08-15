@@ -25,7 +25,7 @@ namespace Humin_Man.Entities
         public string Image { get; set; }
 
         /// <summary>
-        /// Gets or sets the country
+        /// Gets or sets the category
         /// </summary>
         /// <value>
         /// The country.
