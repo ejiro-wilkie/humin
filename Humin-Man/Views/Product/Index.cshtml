@@ -34,21 +34,33 @@
                                 <!-- text input -->
                                 <div class="form-group">
                                     <label>Name</label>
-                                    <input type="text" class="form-control" placeholder="Enter product name" name="name" ng-model="product.name" required>
+                                    <input type="text" class="form-control" placeholder="Enter product name" name="name" ng-model="product.name" ng-minlength="3" ng-maxlength="15" required>
+                                    <span ng-show="productForm.name.$dirty && (productForm.name.$error.minlength || productForm.name.$error.maxlength)" class="text-danger">
+                                        Name must be between 3 to 15 characters.
+                                    </span>
                                 </div>
                                 <div class="form-group">
                                     <label>Image</label>
-                                    <input type="text" class="form-control" placeholder="Enter image URL" name="image" ng-model="product.image" required>
+                                    <input type="text" class="form-control" placeholder="Enter image URL" name="image" ng-model="product.image" ng-minlength="3" ng-maxlength="15" required>
+                                    <span ng-show="productForm.image.$dirty && (productForm.image.$error.minlength || productForm.image.$error.maxlength)" class="text-danger">
+                                        Image URL must be between 3 to 15 characters.
+                                    </span>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label>Buy Price</label>
-                                    <input type="number" class="form-control" placeholder="Enter buy price" name="buyPrice" ng-model="product.buyPrice" required>
+                                    <input type="number" step="10.00" class="form-control" placeholder="Enter buy price" name="buyPrice" ng-model="product.buyPrice" required ng-pattern="/^\d{1,16}(\.\d{1,2})?$/">
+                                    <span ng-show="productForm.buyPrice.$dirty && productForm.buyPrice.$error.pattern" class="text-danger">Invalid buy price format. Only 18 didgits and 2 decimal places allowed.</span>
+
+
                                 </div>
                                 <div class="form-group">
                                     <label>Sell Price</label>
-                                    <input type="number" class="form-control" placeholder="Enter sell price" name="sellPrice" ng-model="product.sellPrice" required>
+                                    <input type="number" step="10.00" class="form-control" placeholder="Enter sell price" name="sellPrice" ng-model="product.sellPrice" required ng-pattern="/^\d{1,16}(\.\d{1,2})?$/">
+                                    <span ng-show="productForm.sellPrice.$dirty && productForm.sellPrice.$error.pattern" class="text-danger">Invalid sell price format. Only 18 didgits and 2 decimal places allowed.</span>
+
+
                                 </div>
                             </div>
                             <div class="col-sm-6">
