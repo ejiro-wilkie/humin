@@ -29,6 +29,14 @@ namespace Humin_Man.Repository
         public DbSet<Shop> Shops { get; set; }
 
         /// <summary>
+        /// Gets or sets the products.
+        /// </summary>
+        /// <value>
+        /// The products.
+        /// </value>
+        public DbSet<Product> Products { get; set; }
+
+        /// <summary>
         /// Gets or sets the categories.
         /// </summary>
         /// <value>
@@ -59,7 +67,18 @@ namespace Humin_Man.Repository
                     .WithMany()
                     .HasForeignKey(country => country.CountryId);
             });
-            builder.Entity<Category>();
+
+            builder.Entity<Product>(c =>
+            {
+                c.HasOne(category => (Category)category.Category)
+                    .WithMany()
+                    .HasForeignKey(category => category.CategoryId);
+
+                c.Property(prod => prod.SellPrice)
+                .HasPrecision(18, 2);
+                c.Property(prod => prod.BuyPrice)
+                .HasPrecision(18, 2);
+            });
         }
     }
 }

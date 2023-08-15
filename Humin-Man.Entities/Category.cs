@@ -6,7 +6,7 @@ namespace Humin_Man.Entities
     /// Class that represents the category entity.
     /// </summary>
     /// <seealso cref="Humin_Man.Entities.BaseEnetity" />
-    public class Category : BaseEnetity
+    public class Category : BaseEnetity, ICategory
     {
         /// <summary>
         /// Gets or sets the name of the category.
