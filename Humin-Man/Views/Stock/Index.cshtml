@@ -34,7 +34,9 @@
                                              ng-options="shop.id as shop.name for shop in shops"
                                              ng-model="stock.shopId"
                                              required
-                                             ng-change="updateShopCapacity()">
+                                             ng-change="updateShopCapacity()"
+                                             ng-disabled="data.isSell">
+
                                     </select>
                                     <span ng-show="stockForm.$submitted && stockForm.shopId.$error.required" class="text-danger">
                                         Shop is required.
@@ -48,7 +50,8 @@
                                             ng-options="category.id as category.name for category in categories"
                                             ng-model="stock.categoryId"
                                             required
-                                            ng-change="filterProductsByCategory()">
+                                            ng-change="filterProductsByCategory()"
+                                            ng-disabled="data.isSell">
                                     </select>
                                     <span ng-show="stockForm.$submitted && stockForm.shopId.$error.required" class="text-danger">
                                         Category is required.
@@ -62,7 +65,8 @@
                                             ng-options="product.id as product.name for product in filteredProducts"
                                             ng-model="stock.productId"
                                             required
-                                            ng-disabled="!stock.categoryId">
+                                            ng-disabled="!stock.categoryId || data.isSell">
+
                                     </select>
                                     <span ng-show="stockForm.$submitted && stockForm.productId.$error.required" class="text-danger">
                                         Product is required.
@@ -87,8 +91,8 @@
                             </div>
                         </div>
                         <div class="card-footer" ng-cloak>
-                            <button type="submit" class="btn btn-primary float-right" ng-click="storeStock()" ng-show="data.isUpdate == false" ng-disabled="stockForm.$invalid">Save</button>
-                            <button type="submit" class="btn btn-primary float-right" ng-show="data.isUpdate == true" ng-disabled="stockForm.$invalid" ng-click="updateStock()">Update</button>
+                            <button type="submit" class="btn btn-primary float-right" ng-click="storeStock()" ng-show="data.isSell == false" ng-disabled="stockForm.$invalid">Save</button>
+                            <button type="submit" class="btn btn-primary float-right" ng-show="data.isSell == true" ng-disabled="stockForm.$invalid" ng-click="updateStock()">Sell Stock</button>
                             <button type="submit" class="btn btn-danger float-right mr-2" ng-click="reset()">Reset</button>
                         </div>
                     </form>
@@ -106,24 +110,23 @@
                             <thead>
                                 <tr>
                                     <th>id</th>
-                                    <th>Quantity</th>
                                     <th>Product Name</th>
                                     <th>Shop Name</th>
+                                    <th>Quantity</th>
                                     <th>Last Updated</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr ng-repeat="stock in stocks" ng-class="{selected: stock.id === data.selectedRow}" ng-cloak>
-                                    <td>{{stock}}</td>
-                                    <td>{{stock.quantity}}</td>
+                                    <td>{{stock.id}}</td>
                                     <td>{{stock.product.name}}</td>
                                     <td>{{stock.shop.name}}</td>
+                                    <td>{{stock.quantity}}</td>
                                     <td>{{stock.updatedAt | date:'MMM dd, yyyy h:mm a'}}</td>
                                     <td>
                                         <div class="btn-group">
-                                            <button type="button" class="btn btn-info" confirmed-click="deleteStock(stock)" ng-confirm-click="Are you sure you want to delete?"><i class="fas fa-trash"></i></button>
-                                            <button type="button" class="btn btn-info" ng-click="editStock(stock);rowHighlighted(stock.id)"><i class="fas fa-edit"></i></button>
+                                            <button type="button" class="btn btn-info" ng-click="sellStock(stock);rowHighlighted(stock.id)">Sell</button>
                                         </div>
                                     </td>
                                 </tr>

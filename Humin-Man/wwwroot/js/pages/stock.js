@@ -32,7 +32,7 @@ app.controller("stock",
             $scope.shops = [];
             $scope.stocks = [];
             $scope.stock = {};
-            $scope.data = { isUpdate: false, selectedRow: null };
+            $scope.data = { isUpdate: false, isSell: false, selectedRow: null };
             $scope.filteredProducts = [];
             $scope.getProducts();
             $scope.getShops();
@@ -105,12 +105,13 @@ app.controller("stock",
                 });
         };
 
-        $scope.editStock = function (stock) {
-            $scope.data.isUpdate = true;
-            $scope.stock.name = stock.name;
+        $scope.sellStock = function (stock) {
+            $scope.data.isSell = true;
             $scope.stock.id = stock.id;
-            $scope.stock.productId = stock.product.id;
+            $scope.stock.quantity = stock.quantity;
             $scope.stock.shopId = stock.shop.id;
+            $scope.stock.categoryId = stock.product.category.id;
+            $scope.stock.productId = stock.product.id;
         };
 
         $scope.getStocks = function () {
@@ -137,7 +138,7 @@ app.controller("stock",
 
 
         $scope.reset = function () {
-            $scope.data = { isUpdate: false, selectedRow: null };
+            $scope.data = { isUpdate: false, isSell: false, selectedRow: null };
             $scope.stock = {};
         };
     });

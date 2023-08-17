@@ -103,6 +103,11 @@ namespace Humin_Man.Controllers
                 await _stockService.AddAsync(_StockModelConverter.Convert(input));
                 return Ok();
             }
+            catch (ArgumentException argEx)
+            {
+                Logger.LogError(argEx, "An argument error occurred.");
+                return BadRequest(new JsonErrorViewModel(argEx.Message));
+            }
             catch (HmException eppException)
             {
                 Logger.LogError(eppException, "A controlled error happened.");
@@ -129,6 +134,11 @@ namespace Humin_Man.Controllers
             {
                 await _stockService.UpdateAsync(id, _StockModelConverter.Convert(input));
                 return Ok();
+            }
+            catch (ArgumentException argEx)
+            {
+                Logger.LogError(argEx, "An argument error occurred.");
+                return BadRequest(new JsonErrorViewModel(argEx.Message));
             }
             catch (HmException eppException)
             {
