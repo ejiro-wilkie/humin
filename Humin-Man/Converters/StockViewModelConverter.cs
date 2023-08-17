@@ -25,7 +25,6 @@ namespace Humin_Man.Converters
             => stocks?.Select(p => new StockOutputViewModel
             {
                 Id = p.Id,
-                Name = p.Name,
                 Quantity = p.Quantity,
                 ShopId = p.ShopId,
                 ProductId = p.ProductId,
@@ -69,7 +68,6 @@ namespace Humin_Man.Converters
             => new StockOutputModel
             {
                 Id = input.Id,
-                Name = input.Name,
                 Quantity = input.Quantity,
                 ShopId = input.ShopId,
                 ProductId = input.ProductId,
@@ -93,7 +91,6 @@ namespace Humin_Man.Converters
             => new AddStockInputModel
             {
                 
-                Name = input.Name,
                 Quantity = input.Quantity,
                 ShopId = input.ShopId,
                 ProductId = input.ProductId,
@@ -108,7 +105,6 @@ namespace Humin_Man.Converters
             => new UpdateStockInputModel
             {
 
-                Name = input.Name,
                 Quantity = input.Quantity,
                 ShopId = input.ShopId,
                 ProductId = input.ProductId,

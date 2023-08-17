@@ -9,15 +9,6 @@ namespace Humin_Man.Common.Model.Stock
     /// </summary>
     public class UpdateStockInputModel
     {
-
-        /// <summary>
-        /// Gets or sets the name.
-        /// </summary>
-        /// <value>
-        /// The name.
-        /// </value>
-        public string Name { get; set; }
-
         /// <summary>
         /// Gets or sets the shop
         /// </summary>

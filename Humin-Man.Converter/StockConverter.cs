@@ -19,7 +19,6 @@ namespace Humin_Man.Converter
             return new StockOutputModel
             {
                 Id = entity.Id,
-                Name = entity.Name,
                 Quantity = entity.Quantity,
                 ShopId = entity.ShopId,
                 ProductId = entity.ProductId,

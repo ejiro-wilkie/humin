@@ -30,8 +30,12 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label>Shop</label>
-                                    <select class="custom-select" ng-options="shop.id as shop.name for shop in shops" ng-model="stock.shopId" required></select>
-                                    <!-- Added validation message for the shop -->
+                                    <select class="custom-select"
+                                             ng-options="shop.id as shop.name for shop in shops"
+                                             ng-model="stock.shopId"
+                                             required
+                                             ng-change="updateShopCapacity()">
+                                    </select>
                                     <span ng-show="stockForm.$submitted && stockForm.shopId.$error.required" class="text-danger">
                                         Shop is required.
                                     </span>
@@ -40,8 +44,12 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label>Category</label>
-                                    <select class="custom-select" ng-options="shop.id as shop.name for shop in shops" ng-model="stock.shopId" required></select>
-                                    <!-- Added validation message for the shop -->
+                                    <select class="custom-select"
+                                            ng-options="category.id as category.name for category in categories"
+                                            ng-model="stock.categoryId"
+                                            required
+                                            ng-change="filterProductsByCategory()">
+                                    </select>
                                     <span ng-show="stockForm.$submitted && stockForm.shopId.$error.required" class="text-danger">
                                         Category is required.
                                     </span>
@@ -50,8 +58,12 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label>Product</label>
-                                    <select class="custom-select" ng-options="product.id as product.name for product in products" ng-model="stock.productId" required></select>
-                                    <!-- Added validation message for the product -->
+                                    <select class="custom-select"
+                                            ng-options="product.id as product.name for product in filteredProducts"
+                                            ng-model="stock.productId"
+                                            required
+                                            ng-disabled="!stock.categoryId">
+                                    </select>
                                     <span ng-show="stockForm.$submitted && stockForm.productId.$error.required" class="text-danger">
                                         Product is required.
                                     </span>
@@ -60,9 +72,16 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label>Quantity</label>
-                                    <input type="number" class="form-control" placeholder="Enter stock quantity" name="quantity" ng-model="stock.quantity" min="1" max="1000" required>
+                                    <input type="number"
+                                           class="form-control"
+                                           placeholder="Enter stock quantity"
+                                           name="quantity"
+                                           ng-model="stock.quantity"
+                                           min="1"
+                                           max="{{selectedShopCapacity}}"
+                                           required>
                                     <span ng-show="stockForm.quantity.$dirty && (stockForm.quantity.$error.min || stockForm.quantity.$error.max)" class="text-danger">
-                                        Quantity must be between 1 and 1000.
+                                        Quantity must be between 1 and {{selectedShopCapacity}}.
                                     </span>
                                 </div>
                             </div>
@@ -87,7 +106,6 @@
                             <thead>
                                 <tr>
                                     <th>id</th>
-                                    <th>Stock Name</th>
                                     <th>Quantity</th>
                                     <th>Product Name</th>
                                     <th>Shop Name</th>
@@ -98,7 +116,6 @@
                             <tbody>
                                 <tr ng-repeat="stock in stocks" ng-class="{selected: stock.id === data.selectedRow}" ng-cloak>
                                     <td>{{stock}}</td>
-                                    <td>{{stock.name}}</td>
                                     <td>{{stock.quantity}}</td>
                                     <td>{{stock.product.name}}</td>
                                     <td>{{stock.shop.name}}</td>

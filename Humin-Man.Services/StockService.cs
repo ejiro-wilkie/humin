@@ -50,11 +50,6 @@ namespace Humin_Man.Services
             if (input == null)
                 throw new ArgumentNullHmException(nameof(input));
 
-            if (string.IsNullOrWhiteSpace(input.Name))
-                throw new ArgumentNullHmException(nameof(input.Name));
-
-            if (input.Name.Length < 5 || input.Name.Length > 10)
-                throw new InvalidNameHmException(input.Name);
 
             var shop = await UnitOfWork.FirstOrDefaultAsync<Shop>(c => c.Id == input.ShopId)
                 ?? throw new EntityNotFoundHmException(nameof(Shop), input.ShopId);
@@ -63,7 +58,6 @@ namespace Humin_Man.Services
 
             var stock = new Stock
             {
-                Name = input.Name,
                 Shop = shop,
                 Product = product,
                 Quantity = input.Quantity
@@ -130,10 +124,6 @@ namespace Humin_Man.Services
             var stock = await UnitOfWork.FirstOrDefaultAsync<Stock>(c => c.Id == id)
                ?? throw new EntityNotFoundHmException(nameof(Stock), id);
 
-            if (input.Name.Length < 5 || input.Name.Length > 10)
-                throw new InvalidNameHmException(input.Name);
-
-            stock.Name = input.Name;
             stock.ShopId = input.ShopId;
             stock.ProductId = input.ProductId;
             stock.UpdatedAt = DateTime.Now;

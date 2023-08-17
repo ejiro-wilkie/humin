@@ -9,14 +9,6 @@ namespace Humin_Man.ViewModels.Stock
     public class AddStockInputViewModel
     {
         /// <summary>
-        /// Gets or sets the name.
-        /// </summary>
-        /// <value>
-        /// The name.
-        /// </value>
-        public string Name { get; set; }
-
-        /// <summary>
         /// Gets or sets the shop
         /// </summary>
         /// <value>

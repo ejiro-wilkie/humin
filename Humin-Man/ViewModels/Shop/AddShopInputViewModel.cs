@@ -28,5 +28,13 @@
         /// The country identifier.
         /// </value>
         public long CountryId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the capacity.
+        /// </summary>
+        /// <value>
+        /// The capacity.
+        /// </value>
+        public int Capacity { get; set; }
     }
 }

@@ -33,16 +33,17 @@ app.controller("stock",
             $scope.stocks = [];
             $scope.stock = {};
             $scope.data = { isUpdate: false, selectedRow: null };
+            $scope.filteredProducts = [];
             $scope.getProducts();
             $scope.getShops();
             $scope.getStocks();
+            $scope.getCategories();
 
         };
 
         $scope.getProducts = function () {
             $http.get("/api/products").then(function (data) {
                 $scope.products = data.data;
-                console.log("Retrieved products:", $scope.products);
             },
                 function (error) {
                     huminAlert.error(error.data.message);
@@ -51,8 +52,15 @@ app.controller("stock",
 
         $scope.getShops = function () {
             $http.get("/api/shops").then(function (data) {
-                $scope.shops = data.data;
-                console.log("Retrieved shops:", $scope.shops);
+                $scope.shops = data.data;            },
+                function (error) {
+                    huminAlert.error(error.data.message);
+                });
+        };
+
+        $scope.getCategories = function () {
+            $http.get("/api/categories").then(function (data) {
+                $scope.categories = data.data;
             },
                 function (error) {
                     huminAlert.error(error.data.message);
@@ -113,6 +121,20 @@ app.controller("stock",
                     huminAlert.error(error.data.message);
                 });
         };
+
+        $scope.filterProductsByCategory = function () {
+            if ($scope.stock.categoryId) {
+                $scope.filteredProducts = $scope.products.filter(product => product.category.id === $scope.stock.categoryId);
+            } else {
+                $scope.filteredProducts = [];
+            }
+        };
+
+        $scope.updateShopCapacity = function () {
+            let selectedShop = $scope.shops.find(shop => shop.id === $scope.stock.shopId);
+            $scope.selectedShopCapacity = selectedShop ? selectedShop.capacity : null;
+        };
+
 
         $scope.reset = function () {
             $scope.data = { isUpdate: false, selectedRow: null };

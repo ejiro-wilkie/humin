@@ -63,6 +63,7 @@ namespace Humin_Man.Services
             {
                 Name = input.Name,
                 Image = input.Image,
+                Capacity = input.Capacity,
                 Country = country
             };
 
@@ -132,6 +133,7 @@ namespace Humin_Man.Services
 
             shop.Name = input.Name;
             shop.CountryId = input.CountryId;
+            shop.Capacity = input.Capacity;
             shop.IsLocked = input.IsLocked;
             shop.UpdatedAt = DateTime.Now;
 
