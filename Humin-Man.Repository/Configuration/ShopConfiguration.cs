@@ -15,6 +15,10 @@ namespace Humin_Man.Repository.Configuration
                 .HasForeignKey(e => e.ShopId)
                 .IsRequired()
                 .OnDelete(DeleteBehavior.Cascade);
+            builder.HasOne<Product>(product => (Product)product.Product)
+                    .WithMany()
+                    .HasForeignKey(product => product.ProductId)
+                    .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

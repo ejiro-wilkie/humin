@@ -27,6 +27,7 @@ namespace Humin_Man.Converters
                     Id = p.Category.Id,
                     Name = p.Category.Name
                 },
+                Quantity = p.Quantity,
                 BuyPrice = p.BuyPrice,
                 SellPrice = p.SellPrice,
                 CategoryId = p.CategoryId,
@@ -46,7 +47,7 @@ namespace Humin_Man.Converters
                 Image = input.Image,
                 BuyPrice = input.BuyPrice,
                 SellPrice = input.SellPrice,
-                CategoryId = input.CategoryId,
+                CategoryId = input.CategoryId
             };
     }
 }

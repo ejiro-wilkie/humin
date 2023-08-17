@@ -88,17 +88,6 @@ namespace Humin_Man.Repository
                 c.Property(prod => prod.BuyPrice)
                 .HasPrecision(18, 2);
             });
-
-            builder.Entity<Stock>(c =>
-            {
-                c.HasOne(product => (Product)product.Product)
-                    .WithMany()
-                    .HasForeignKey(product => product.ProductId);
-                c.HasOne(shop => (Shop)shop.Shop)
-                    .WithMany()
-                    .HasForeignKey(shop => shop.ShopId);
-
-            });
         }
     }
 }

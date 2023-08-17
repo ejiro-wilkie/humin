@@ -56,9 +56,11 @@ namespace Humin_Man.Services
             {
                 Name = input.Name,
                 Category = category,
+                CategoryId = input.CategoryId,
                 SellPrice = input.SellPrice,
                 BuyPrice = input.BuyPrice,
                 Image = input.Image,
+                Quantity = input.Quantity,
             };
 
             UnitOfWork.Add(product);

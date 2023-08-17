@@ -58,15 +58,11 @@
 
             DateTime thresholdDateTime = new DateTime(1900, 1, 1);
 
-            var totalCurrentProductsQuantity = await UnitOfWork.Query<Stock>()
-                .Where(s => s.Shop.Id == shop.Id && s.DeletedAt < thresholdDateTime)
-                .SumAsync(s => s.Quantity);
-
             var existingStock = await UnitOfWork.FirstOrDefaultAsync<Stock>(s => s.Shop.Id == shop.Id && s.Product.Id == product.Id && s.DeletedAt < thresholdDateTime);
 
             if (existingStock != null)
             {
-                if (totalCurrentProductsQuantity + input.Quantity > shop.Capacity)
+                if (input.Quantity > shop.Capacity)
                     throw new ArgumentException("The quantity exceeds the shop's capacity.");
 
                 existingStock.Quantity += input.Quantity;
@@ -74,7 +70,7 @@
             }
             else
             {
-                if (totalCurrentProductsQuantity + input.Quantity > shop.Capacity)
+                if (input.Quantity > shop.Capacity)
                     throw new ArgumentException("The quantity exceeds the shop's capacity.");
 
                 var stock = new Stock
@@ -86,6 +82,14 @@
 
                 UnitOfWork.Add(stock);
             }
+
+            shop.Capacity -= input.Quantity;
+            if (shop.Capacity < 0)
+                throw new ArgumentException("The shop's capacity cannot go negative.");
+            product.Quantity += input.Quantity;
+
+            UnitOfWork.Update(product);
+            UnitOfWork.Update(shop);
 
             await UnitOfWork.SaveAsync();
         }
@@ -148,6 +152,10 @@
         {
             var stock = await UnitOfWork.FirstOrDefaultAsync<Stock>(c => c.Id == id)
                ?? throw new EntityNotFoundHmException(nameof(Stock), id);
+            var product = await UnitOfWork.FirstOrDefaultAsync<Product>(c => c.Id == input.ProductId)
+                ?? throw new EntityNotFoundHmException(nameof(Product), input.ProductId);
+            var shop = await UnitOfWork.FirstOrDefaultAsync<Shop>(c => c.Id == stock.ShopId)
+               ?? throw new EntityNotFoundHmException(nameof(Shop), stock.ShopId);
 
             if (input.Quantity <= 0)
                 throw new ArgumentException("Quantity must be a positive value.");
@@ -155,9 +163,19 @@
             if (stock.Quantity - input.Quantity < 0)
                 throw new ArgumentException("Not enough stock available for this sale.");
 
-            stock.Quantity -= input.Quantity;
 
+            shop.Capacity += input.Quantity;
+            shop.UpdatedAt = DateTime.Now;
+
+            stock.Quantity -= input.Quantity;
+            stock.UpdatedAt = DateTime.Now;
+
+            product.Quantity -= input.Quantity;
+            product.UpdatedAt = DateTime.Now;
+
+            UnitOfWork.Update(product);
             UnitOfWork.Update(stock);
+            UnitOfWork.Update(shop);
             await UnitOfWork.SaveAsync();
         }
 
