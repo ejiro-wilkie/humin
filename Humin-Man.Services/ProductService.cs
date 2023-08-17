@@ -124,7 +124,6 @@ namespace Humin_Man.Services
             product.CategoryId = input.CategoryId;
             product.SellPrice = input.SellPrice;
             product.BuyPrice = input.BuyPrice;
-            // ... (you might want to map other properties from the input as well)
             product.UpdatedAt = DateTime.Now;
 
             UnitOfWork.Update(product);
