@@ -32,6 +32,8 @@ namespace Humin_Man.Converter
                     Name = entity.Category.Name,
                     Id = entity.CategoryId
                 },
+                Quantity = entity.Quantity,
+                CategoryId = entity.CategoryId,
                 UpdatedAt = entity.UpdatedAt,
             };
         }

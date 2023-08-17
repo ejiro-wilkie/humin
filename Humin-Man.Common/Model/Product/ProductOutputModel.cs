@@ -1,15 +1,16 @@
 ﻿using System;
-using Humin_Man.ViewModels.Category;
+using Humin_Man.Common.Model.Category;
+using Humin_Man.Core.Entities;
 
-namespace Humin_Man.ViewModels.Product
+namespace Humin_Man.Common.Model.Product
 {
     /// <summary>
-    /// Class that represents the add product view model.
+    /// Class that represents the product model.
     /// </summary>
-    public class ProductViewModel
+    public class ProductOutputModel
     {
         /// <summary>
-        /// Gets or sets the product identifier.
+        /// Gets or sets the identifier of the product.
         /// </summary>
         /// <value>
         /// The category identifier.
@@ -57,12 +58,12 @@ namespace Humin_Man.ViewModels.Product
         public long CategoryId { get; set; }
 
         /// <summary>
-        /// Gets or sets the category.
+        /// Gets or sets the category
         /// </summary>
         /// <value>
-        /// The capacity.
+        /// The country.
         /// </value>
-        public CategoryViewModel Category { get; set; }
+        public CategoryModel Category { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating when this instance was last updated.

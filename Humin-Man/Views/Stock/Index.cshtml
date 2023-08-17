@@ -1,0 +1,147 @@
+﻿@{
+    ViewData["Title"] = "Stock";
+}
+
+@section Scripts
+    {
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+    <script src="~/js/pages/stock.js" asp-append-version="true"></script>
+}
+
+@section Styles
+    {
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.0.2/dist/sweetalert2.min.css">
+}
+
+<div ng-app="App" ng-controller="stock" ng-init="init()">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title" ng-cloak>
+                        <span ng-show="data.isUpdate == false">Create</span>
+                        <span ng-show="data.isUpdate == true">Edit</span> Stock
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <form name="stockForm">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Shop</label>
+                                    <select class="custom-select"
+                                             ng-options="shop.id as shop.name for shop in shops"
+                                             ng-model="stock.shopId"
+                                             required
+                                             ng-change="updateShopCapacity()"
+                                             ng-disabled="data.isSell">
+
+                                    </select>
+                                    <span ng-show="stockForm.$submitted && stockForm.shopId.$error.required" class="text-danger">
+                                        Shop is required.
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Category</label>
+                                    <select class="custom-select"
+                                            ng-options="category.id as category.name for category in categories"
+                                            ng-model="stock.categoryId"
+                                            required
+                                            ng-change="filterProductsByCategory()"
+                                            ng-disabled="data.isSell">
+                                    </select>
+                                    <span ng-show="stockForm.$submitted && stockForm.shopId.$error.required" class="text-danger">
+                                        Category is required.
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Product</label>
+                                    <select class="custom-select"
+                                            ng-options="product.id as product.name for product in filteredProducts"
+                                            ng-model="stock.productId"
+                                            required
+                                            ng-disabled="!stock.categoryId || data.isSell">
+
+                                    </select>
+                                    <span ng-show="stockForm.$submitted && stockForm.productId.$error.required" class="text-danger">
+                                        Product is required.
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Quantity</label>
+                                    <input type="number"
+                                           class="form-control"
+                                           placeholder="Enter stock quantity"
+                                           name="quantity"
+                                           ng-model="stock.quantity"
+                                           min="1"
+                                           max="{{selectedShopCapacity}}"
+                                           required>
+                                    <span ng-show="stockForm.quantity.$dirty && (stockForm.quantity.$error.min || stockForm.quantity.$error.max)" class="text-danger">
+                                        Quantity must be between 1 and {{selectedShopCapacity}}.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer" ng-cloak>
+                            <button type="submit" class="btn btn-primary float-right" ng-click="storeStock()" ng-show="data.isSell == false" ng-disabled="stockForm.$invalid">Save</button>
+                            <button type="submit" class="btn btn-primary float-right" ng-show="data.isSell == true" ng-disabled="stockForm.$invalid" ng-click="updateStock()">Sell Stock</button>
+                            <button type="submit" class="btn btn-danger float-right mr-2" ng-click="reset()">Reset</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <section class="content">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <table id="example1" class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>id</th>
+                                    <th>Product Name</th>
+                                    <th>Shop Name</th>
+                                    <th>Quantity</th>
+                                    <th>Last Updated</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="stock in stocks" ng-class="{selected: stock.id === data.selectedRow}" ng-cloak>
+                                    <td>{{stock.id}}</td>
+                                    <td>{{stock.product.name}}</td>
+                                    <td>{{stock.shop.name}}</td>
+                                    <td>{{stock.quantity}}</td>
+                                    <td>{{stock.updatedAt | date:'MMM dd, yyyy h:mm a'}}</td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-info" ng-click="sellStock(stock);rowHighlighted(stock.id)">Sell</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div ng-show="stocks.length== 0" ng-cloak class="text-center p-3 border-dark">  No data found </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<style>
+    .selected {
+        background: #dee2e6;
+    }
+</style>

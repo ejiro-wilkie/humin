@@ -45,6 +45,15 @@
                                     <select class="custom-select" ng-options="country.id as country.name for country in countries" ng-model="shop.countryId" required></select>
                                 </div>
                             </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Capacity</label>
+                                    <input type="number" class="form-control" placeholder="Enter stock capacity" name="capacity" ng-model="shop.capacity" min="1" max="1000" required>
+                                    <span ng-show="stockForm.capacity.$dirty && (stockForm.capacity.$error.min || stockForm.capacity.$error.max)" class="text-danger">
+                                        capacity must be between 1 and 1000.
+                                    </span>
+                                </div>
+                            </div>
                         </div>
                         <div class="card-footer" ng-cloak>
                             <button type="submit" class="btn btn-primary float-right" ng-click="storeShop()" ng-show="data.isUpdate == false" ng-disabled="shopForm.$invalid">Save</button>

@@ -56,5 +56,13 @@ namespace Humin_Man.Core.Entities
         /// The country.
         /// </value>
         public decimal SellPrice { get; set; }
+
+        /// <summary>
+        /// Gets or sets the quantity
+        /// </summary>
+        /// <value>
+        /// The quantity
+        /// </value>
+        public long Quantity { get; set; }
     }
 }

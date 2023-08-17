@@ -74,15 +74,20 @@ namespace Humin_Man.Extensions
             services.AddTransient<ICountryService, CountryService>();
             services.AddTransient<ICategoryService, CategoryService>();
             services.AddTransient<IProductService, ProductService>();
+            services.AddTransient<IStockService, StockService>();
 
             services.AddSingleton<ShopConverter>();
             services.AddSingleton<CategoryConverter>();
             services.AddSingleton<UserConverter>();
             services.AddSingleton<ProductConverter>();
+            services.AddSingleton<StockConverter>();
+
+
             services.AddSingleton<UserViewModelConverter>();
             services.AddSingleton<ShopViewModelConverter>();
             services.AddSingleton<CategoryModelConverter>();
             services.AddSingleton<ProductModelConverter>();
+            services.AddSingleton<StockModelConverter>();
 
             return services;
         }

@@ -40,7 +40,8 @@ namespace Humin_Man.Converters
             => new AddShopInputModel
             {
                 CountryId = input.CountryId,
-                Name = input.Name
+                Name = input.Name,
+                Capacity = input.Capacity
             };
 
         /// <summary>
@@ -52,7 +53,8 @@ namespace Humin_Man.Converters
             => new UpdateShopInputModel
             {
                 Name = input.Name,
-                CountryId = input.CountryId
+                CountryId = input.CountryId,
+                Capacity = input.Capacity
             };
     }
 }

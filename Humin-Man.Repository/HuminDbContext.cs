@@ -37,6 +37,14 @@ namespace Humin_Man.Repository
         public DbSet<Product> Products { get; set; }
 
         /// <summary>
+        /// Gets or sets the stocks.
+        /// </summary>
+        /// <value>
+        /// The stocks.
+        /// </value>
+        public DbSet<Stock> Stocks { get; set; }
+
+        /// <summary>
         /// Gets or sets the categories.
         /// </summary>
         /// <value>
@@ -60,6 +68,7 @@ namespace Humin_Man.Repository
             base.OnModelCreating(builder);
 
             builder.ApplyConfiguration(new ShopConfiguration());
+            builder.ApplyConfiguration(new StockConfiguration());
 
             builder.Entity<Shop>(c =>
             {

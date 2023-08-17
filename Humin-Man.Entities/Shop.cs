@@ -3,7 +3,7 @@
 namespace Humin_Man.Entities
 {
     /// <summary>
-    /// Class that represents the companie entity.
+    /// Class that represents the shop entity.
     /// </summary>
     /// <seealso cref="Humin_Man.Entities.BaseEnetity" />
     public class Shop : BaseEnetity, IShop

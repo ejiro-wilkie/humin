@@ -88,6 +88,7 @@ app.controller("shop",
             $scope.shop.name = shop.name;
             $scope.shop.id = shop.id;
             $scope.shop.countryId = shop.country.id;
+            $scope.shop.capacity = shop.capacity;
         };
 
         $scope.getShops = function() {

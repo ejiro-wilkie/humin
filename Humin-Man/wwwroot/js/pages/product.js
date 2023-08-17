@@ -24,6 +24,21 @@ app.directive('ngConfirmClick', [
         };
     }
 ]);
+app.directive('greaterThan', function () {
+    return {
+        require: 'ngModel',
+        link: function (scope, element, attrs, ngModel) {
+            ngModel.$validators.greaterThan = function (value) {
+                return value > scope.product.buyPrice;
+            };
+
+            scope.$watch('product.buyPrice', function () {
+                ngModel.$validate();
+            });
+        }
+    };
+});
+
 
 app.controller("product",
     function ($scope, $http) {
