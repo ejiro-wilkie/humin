@@ -58,7 +58,7 @@
                                 <div class="form-group">
                                     <label>Sell Price</label>
                                     <input type="number" step="1" class="form-control" placeholder="Enter sell price" name="sellPrice" ng-model="product.sellPrice" required ng-pattern="/^\d{1,16}(\.\d{1,2})?$/" greater-than>
-                                    <span ng-show="productForm.sellPrice.$error.greaterThan" class="text-danger">Sell price should be greater than buy price.</span>
+                                    <span ng-show="productForm.sellPrice.$error.greaterThan && productForm.buyPrice.$dirty" class="text-danger">Sell price should be greater than buy price.</span>
 
 
                                 </div>

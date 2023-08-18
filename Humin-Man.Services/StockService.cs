@@ -107,8 +107,6 @@
                 var stock = await UnitOfWork.FirstOrDefaultAsync<Stock>(c => c.Id == id)
                     ?? throw new EntityNotFoundHmException(nameof(Stock), id);
 
-                stock.DeletedAt = DateTime.Now;
-
                 UnitOfWork.SoftDelete(stock);
                 await UnitOfWork.SaveAsync();
             }
@@ -169,13 +167,19 @@
 
             stock.Quantity -= input.Quantity;
             stock.UpdatedAt = DateTime.Now;
+            
 
             product.Quantity -= input.Quantity;
             product.UpdatedAt = DateTime.Now;
 
             UnitOfWork.Update(product);
-            UnitOfWork.Update(stock);
             UnitOfWork.Update(shop);
+            UnitOfWork.Update(stock);
+
+            if (stock.Quantity < 1)
+            {
+               UnitOfWork.SoftDelete(stock);
+            }
             await UnitOfWork.SaveAsync();
         }
 

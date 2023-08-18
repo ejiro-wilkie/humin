@@ -1,5 +1,6 @@
 ﻿using Humin_Man.Common.Repository;
 using Humin_Man.Core.Entities;
+using Humin_Man.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.Logging;
@@ -41,13 +42,27 @@ namespace Humin_Man.Repository
         public virtual List<T> Get<T>(Expression<Func<T, bool>> expression) where T : class, IBaseEntity => Query(expression).ToList();
 
         /// <inheritdoc/>
-        public virtual void Add<T>(T entity) where T : class, IBaseEntity => _context.Add(entity);
+        public virtual void Add<T>(T entity) where T : class, IBaseEntity
+        {
+            DateTime utcNow = DateTime.UtcNow;
+
+            if(entity is BaseEnetity b)
+            {
+                b.CreatedAt = utcNow;
+            }
+            entity.UpdatedAt = utcNow;
+            _context.Add(entity);
+        }
 
         /// <inheritdoc/>
         public Task<List<T>> GetAsync<T>() where T : class, IBaseEntity => _context.Set<T>().Where(e => e.IsDeleted == false).ToListAsync();
 
         /// <inheritdoc/>
-        public virtual void Update<T>(T entity) where T : class, IBaseEntity => _context.Update(entity);
+        public virtual void Update<T>(T entity) where T : class, IBaseEntity
+        {
+            entity.UpdatedAt = DateTime.UtcNow;
+            _context.Update(entity);
+        }
 
         /// <inheritdoc/>
         public virtual void Delete<T>(T entity) where T : class, IBaseEntity => _context.Remove(entity);
@@ -63,6 +78,10 @@ namespace Humin_Man.Repository
         /// <param name="entity">The entity.</param>
         public virtual void SoftDelete<T>(T entity) where T : class, IBaseEntity
         {
+            if (entity is BaseEnetity b)
+            {
+                b.DeletedAt = DateTime.UtcNow;
+            }
             entity.IsDeleted = true;
             Update(entity);
         }
