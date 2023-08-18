@@ -96,7 +96,7 @@ app.controller("stock",
         $scope.updateStock = function () {
             $http.post(`/api/stock/${$scope.stock.id}/update`, $scope.stock).then(
                 function (data) {
-                    huminAlert.success("updated successfully");
+                    huminAlert.success("Sold successfully");
                     $scope.reset();
                     $scope.getStocks();
                 },
