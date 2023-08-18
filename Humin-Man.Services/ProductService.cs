@@ -69,7 +69,7 @@ namespace Humin_Man.Services
 
 
         /// <summary>
-        /// Deletes the asynchronously.
+        /// Deletes the product asynchronously.
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <returns></returns>
@@ -79,7 +79,11 @@ namespace Humin_Man.Services
             var product = await UnitOfWork.FirstOrDefaultAsync<Product>(p => p.Id == id)
                 ?? throw new EntityNotFoundHmException(nameof(Product), id);
 
-            product.DeletedAt = DateTime.Now;
+            var associatedStock = await UnitOfWork.FirstOrDefaultAsync<Stock>(s => s.ProductId == id);
+            if (associatedStock != null)
+            {
+                UnitOfWork.SoftDelete(associatedStock);
+            }
 
             UnitOfWork.SoftDelete(product);
             await UnitOfWork.SaveAsync();
