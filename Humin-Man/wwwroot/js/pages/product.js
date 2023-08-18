@@ -29,8 +29,12 @@ app.directive('greaterThan', function () {
         require: 'ngModel',
         link: function (scope, element, attrs, ngModel) {
             ngModel.$validators.greaterThan = function (value) {
+                if (value === undefined || scope.product.buyPrice === undefined) {
+                    return true;
+                }
                 return value > scope.product.buyPrice;
             };
+
 
             scope.$watch('product.buyPrice', function () {
                 ngModel.$validate();
